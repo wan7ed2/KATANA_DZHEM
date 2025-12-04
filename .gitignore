@@ -76,5 +76,5 @@ crashlytics-build.properties
 
 # Different Unity versions
 Packages/packages-lock.json
-ProjectSettings/ProjectSettings.txt
+ProjectSettings/ProjectVersion.txt
 ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
