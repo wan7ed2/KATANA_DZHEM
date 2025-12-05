@@ -4,6 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "VolumeSetting", menuName = "Settings/VolumeSetting")]
 public class VolumeSetting : ScriptableObject
 {
+    [field: SerializeField] public VolumeType Type { get; private set; }
+
     [SerializeField, Range(0f, 1f)] private float currentValue;
 
     public event Action Changed;

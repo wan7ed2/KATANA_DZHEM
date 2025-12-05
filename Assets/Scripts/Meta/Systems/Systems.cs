@@ -13,6 +13,7 @@ public class Systems
 
         _systems[type] = system;
     }
+
     public static T Get<T>() where T : ISystem
     {
         var type = typeof(T);
