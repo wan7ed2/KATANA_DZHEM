@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class Character : MonoBehaviour
 {
     public void ApplyPush(Vector2 force)
     {

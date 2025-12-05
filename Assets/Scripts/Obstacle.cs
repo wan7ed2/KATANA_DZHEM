@@ -17,7 +17,7 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
+        if (collision.gameObject.TryGetComponent<Character>(out Character player))
             return;
 
         Vector2 pushDirection = (collision.transform.position - transform.position).normalized;
