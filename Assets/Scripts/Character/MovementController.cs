@@ -19,7 +19,6 @@ public class MovementController
 
     public void Start()
     {
-        _isStarted = true;
         _input.Player.Enable();
         
         _jumpAction.performed += Jump;
@@ -28,7 +27,6 @@ public class MovementController
     
     public void Stop()
     {
-        _isStarted = false;
         _input.Player.Disable();
         
         _jumpAction.performed -= Jump;
@@ -37,11 +35,8 @@ public class MovementController
 
     public void Update()
     {
-        Debug.Log($"{_walkRightAction.IsPressed()} and {_walkLeftAction.IsPressed()}");
         if (_walkRightAction.IsPressed()) Move(RIGHT_DIRECTION);
         else if (_walkLeftAction.IsPressed()) Move(LEFT_DIRECTION);
-
-        ApplyGravity();
     }
 
     private const float RIGHT_DIRECTION = 1f;
@@ -58,8 +53,6 @@ public class MovementController
     private InputSystem_Actions _input;
 
     private Rigidbody2D _rigidbody;
-
-    private bool _isStarted;
 
     private void Move(float direction)
     {
