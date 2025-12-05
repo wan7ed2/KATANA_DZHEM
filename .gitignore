@@ -76,4 +76,9 @@ crashlytics-build.properties
 
 # Different Unity versions
 /ProjectSettings/ProjectVersion.txt
-.idea/.idea.KATANA_DZHEM/.idea/workspace.xml
+
+# IDE - JetBrains Rider
+.idea/
+
+# IDE - VS Code
+.vscode/
