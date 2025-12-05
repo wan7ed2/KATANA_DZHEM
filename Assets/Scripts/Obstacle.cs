@@ -17,7 +17,7 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.TryGetComponent<IPushableByObstacle>(out IPushableByObstacle pushable))
+        if (!collision.gameObject.TryGetComponent<IPushableByObstacle>(out IPushableByObstacle pushable))
             return;
 
         Vector2 pushDirection = (collision.transform.position - transform.position);
