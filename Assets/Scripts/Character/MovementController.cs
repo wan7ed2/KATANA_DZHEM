@@ -37,6 +37,7 @@ public class MovementController
 
     public void Update()
     {
+        Debug.Log($"{_walkRightAction.IsPressed()} and {_walkLeftAction.IsPressed()}");
         if (_walkRightAction.IsPressed()) Move(RIGHT_DIRECTION);
         else if (_walkLeftAction.IsPressed()) Move(LEFT_DIRECTION);
 

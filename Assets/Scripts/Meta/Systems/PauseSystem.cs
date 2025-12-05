@@ -13,6 +13,7 @@ public class PauseSystem : ISystem
 
     public void Pause()
     {
+        Debug.Log("Pause enabled");
         Time.timeScale = 0f;
         foreach (var handler in _handlers)
             handler.OnPause();
@@ -20,6 +21,7 @@ public class PauseSystem : ISystem
 
     public void Resume()
     {
+        Debug.Log("Pause disabled");
         Time.timeScale = 1f;
         foreach (var handler in _handlers)
             handler.OnResume();

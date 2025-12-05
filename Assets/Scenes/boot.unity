@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef5a8fefb9666c4eb2d34309c65c9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainLevelName: SampleScene
+  mainLevelName: d1mas_scene
   curtainPrefab: {fileID: 7182502551022052051, guid: 81aa15cc5031fc44ca3401a429fbfbe3, type: 3}
 --- !u!4 &328825528
 Transform:
