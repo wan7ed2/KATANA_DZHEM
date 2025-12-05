@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Bootstrapper : MonoBehaviour, ICoroutineRunner
 {
-    [SerializeField] private string mainLevelName = "bootup";
+    [SerializeField] private string mainLevelName;
     [SerializeField] private Curtain curtainPrefab;
 
     private LevelLoadSystem _levelLoad;
