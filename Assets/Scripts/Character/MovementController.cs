@@ -76,6 +76,9 @@ public class MovementController : IPushableByObstacle
         var mods = GetModifiers();
         
         var force = direction * (_settings.WALK_FORCE * mods.AccelerationMultiplier * Time.fixedDeltaTime);
+        if (!_groundChecker.IsGrounded)
+            force *= _settings.AIR_MULTIPLIER;
+        
         var xVelocity = _rigidbody.velocity.x + force;
         
         var maxSpeed = _settings.MAX_WALK_SPEED * mods.SpeedMultiplier;

@@ -5,9 +5,7 @@ public class MovementsSettings
 {
     public float MAX_WALK_SPEED;
     public float WALK_FORCE;
-    public float JUMP_FORCE;
-
-    public float GRAVITY;
+    public float AIR_MULTIPLIER;
 }
 
 [Serializable]

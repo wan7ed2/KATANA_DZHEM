@@ -989,8 +989,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7896785005929326871}
   - component: {fileID: 3940299604261442475}
-  - component: {fileID: 6449112728201217842}
   - component: {fileID: 4611928572962017274}
+  - component: {fileID: 3600217914289758483}
   m_Layer: 0
   m_Name: Stick Sprite
   m_TagString: Untagged
@@ -1065,21 +1065,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6449112728201217842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3324854280235822526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6233215e6e4c65b1205d96d8fd3c34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lerpV: 0.9
-  _target: {fileID: 1327118840885029535}
-  _source: {fileID: 7896785005929326871}
 --- !u!114 &4611928572962017274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1092,9 +1077,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2902a140f97d4b18b674a0524edcbff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lerpV: 0.9
+  _lerpV: 0.1
   _target: {fileID: 1327118840885029535}
   _source: {fileID: 7896785005929326871}
+--- !u!114 &3600217914289758483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3324854280235822526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e06d13ac9366488183dbd93ae9c531d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 6025056568735831888}
+  _lerpV: 0.5
 --- !u!1 &3602277801442757970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,8 +1897,7 @@ MonoBehaviour:
   _movementsSettings:
     MAX_WALK_SPEED: 3
     WALK_FORCE: 100
-    JUMP_FORCE: 40000
-    GRAVITY: 0
+    AIR_MULTIPLIER: 0.5
   _stickSettings:
     ROTATE_SPEED: 36000
     DAMPING: 0.2
@@ -2128,8 +2126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _checkDistance: 0.75
-  _radiusCheck: 0.5
-  _circleCheckOffset: 0.3
+  _radiusCheck: 0.4
+  _circleCheckOffset: 0.4
   _layerMask:
     serializedVersion: 2
     m_Bits: 64
