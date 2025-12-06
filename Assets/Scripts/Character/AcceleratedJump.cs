@@ -30,7 +30,7 @@ public class AcceleratedJump : MonoBehaviour
         StartCoroutine(JumpCoroutine(modifier));
     }
 
-    private void FixedUpdate()
+    public void Tick()
     {
         if (!_isJumping && !groundChecker.IsGrounded)
             ApplyGravity();

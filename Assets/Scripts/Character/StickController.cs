@@ -22,7 +22,7 @@ namespace Character
             
         }
 
-        public void Update()
+        public void Tick()
         {
             RotateStick();
         }

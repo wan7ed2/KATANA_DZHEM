@@ -10,6 +10,7 @@ public class Player : MonoBehaviour, IPushableByObstacle
     [SerializeField] private Rigidbody2D _stickRigidbody;
     [SerializeField] private CharacterStatusEffectHandler _statusHandler;
     [SerializeField] private AcceleratedJump _acceleratedJump;
+    [SerializeField] private MovementWeightRestriction _movementWeightRestriction;
 
     public Rigidbody2D Rigidbody => _rigidbody;
     public MovementController MovementController => _movementController;
@@ -42,9 +43,10 @@ public class Player : MonoBehaviour, IPushableByObstacle
 
     private void FixedUpdate()
     {
-        _groundChecker.Update();
-        _movementController.Update();
-        _stickController.Update();
+        _groundChecker.Tick();
+        _movementController.Tick();
+        _stickController.Tick();
+        _acceleratedJump.Tick();
     }
 
     private void OnDestroy()
