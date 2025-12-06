@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MovementController
+public class MovementController : IPushableByObstacle
 {
     public MovementController(Rigidbody2D rigidbody, MovementsSettings settings, GroundChecker groundChecker, InputSystem_Actions.PlayerActions input)
     {
@@ -33,6 +33,11 @@ public class MovementController
         else if (_walkLeftAction.IsPressed()) Move(LEFT_DIRECTION);
         
         ApplyGravity();
+    }
+    
+    public void Push(Vector2 direction, float force)
+    {
+        _rigidbody.velocity += direction * force;
     }
 
     private const float RIGHT_DIRECTION = 1f;
@@ -78,5 +83,4 @@ public class MovementController
         _rigidbody.position = Vector2.one;
         _rigidbody.velocity = Vector2.zero;
     }
-    
 }

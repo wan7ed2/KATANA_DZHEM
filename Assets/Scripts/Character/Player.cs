@@ -10,7 +10,9 @@ public class Player : MonoBehaviour, IPushableByObstacle
     [SerializeField] private GroundChecker _groundChecker;
     [SerializeField] private Rigidbody2D _stickRigidbody;
 
-    public Rigidbody2D Rigidbody => _rigidbody; 
+    public Rigidbody2D Rigidbody => _rigidbody;
+
+    public MovementController MovementController => _movementController;
     
     private MovementController _movementController;
     private StickController _stickController;
