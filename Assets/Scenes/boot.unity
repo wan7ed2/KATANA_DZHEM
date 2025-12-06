@@ -245,6 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainLevelName: d1mas_scene
   curtainPrefab: {fileID: 7182502551022052051, guid: 81aa15cc5031fc44ca3401a429fbfbe3, type: 3}
+  soundSourcePrefab: {fileID: 2044178415318986039, guid: f16243974222c6b4a898244176725a64, type: 3}
 --- !u!4 &328825528
 Transform:
   m_ObjectHideFlags: 0
