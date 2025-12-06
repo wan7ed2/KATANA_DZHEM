@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8101450556072407452}
   - component: {fileID: 1150898422412928087}
-  - component: {fileID: 8725304250926021661}
   - component: {fileID: 1939341542916141243}
   m_Layer: 0
   m_Name: Bulava
@@ -63,19 +62,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &8725304250926021661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761142484266607739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4e5f6789012345678abcdef12345678, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetRigidbody: {fileID: 1150898422412928087}
 --- !u!114 &1939341542916141243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af9a15b626060747a2fadbc1f2138b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stickyController: {fileID: 8725304250926021661}
+  _stickyController: {fileID: 6822505356141508767}
   _targetRigidbody: {fileID: 1150898422412928087}
 --- !u!1 &4454619696934157258
 GameObject:
@@ -101,6 +87,7 @@ GameObject:
   - component: {fileID: 6294244208538794889}
   - component: {fileID: 6892012469693153191}
   - component: {fileID: 3632750540915362271}
+  - component: {fileID: 6822505356141508767}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -173,6 +160,19 @@ MonoBehaviour:
   onlyHorizontalPush: 0
   pushForce: 10
   shouldDestroyAfterCollision: 0
+--- !u!114 &6822505356141508767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4454619696934157258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e5f6789012345678abcdef12345678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stickParent: {fileID: 8101450556072407452}
 --- !u!1 &4480598257437226925
 GameObject:
   m_ObjectHideFlags: 0
