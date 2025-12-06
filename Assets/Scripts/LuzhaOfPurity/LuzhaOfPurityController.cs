@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LuzhaOfPurityController : MonoBehaviour
 {
+
+    [SerializeField] private ParticleSystem _particles;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         IPurifiable purifiable;
@@ -14,6 +17,7 @@ public class LuzhaOfPurityController : MonoBehaviour
             return;
 
         purifiable.Purify();
+        _particles.Play();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,6 +25,10 @@ public class LuzhaOfPurityController : MonoBehaviour
         if (!collision.gameObject.TryGetComponent<IPurifiable>(out IPurifiable purifiable))
             return;
 
+        if (purifiable.IsPureAlready())
+            return;
+        
         purifiable.Purify();
+        _particles.Play();
     }
 }
