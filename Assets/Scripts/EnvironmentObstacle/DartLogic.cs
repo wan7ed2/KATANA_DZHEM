@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class DartLogic : MonoBehaviour
 {
+    [SerializeField] private float _speed = 1f;
+    [SerializeField] private bool isUp = true; // true - up, false - right
 
-    [SerializeField] float _velocity = 0.03f;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
+        if (isUp)
+            transform.position += transform.up * _speed * Time.deltaTime;
+        else
+            transform.position += transform.right * _speed * Time.deltaTime;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position += new Vector3(_velocity, 0, 0);
     }
 }

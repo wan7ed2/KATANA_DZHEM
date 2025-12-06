@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 460837675922082392}
   - component: {fileID: 6112570342149686379}
   - component: {fileID: 6114608311129832178}
+  - component: {fileID: 588849938901245598}
   m_Layer: 0
   m_Name: Dart
   m_TagString: Untagged
@@ -99,7 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1831acc46cb1e1e45bde0bfc107f14e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocity: 0.03
+  _speed: 10
+  isUp: 1
 --- !u!61 &6112570342149686379
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -160,3 +162,16 @@ MonoBehaviour:
   onlyHorizontalPush: 1
   pushForce: 5
   shouldDestroyAfterCollision: 1
+--- !u!114 &588849938901245598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528840524229027566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c58e6a054f86b4e91431068b650a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lifeTime: 7

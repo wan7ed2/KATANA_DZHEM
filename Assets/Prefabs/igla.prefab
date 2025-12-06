@@ -155,7 +155,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 472940859124306360}
-  - component: {fileID: 3211905280693439383}
+  - component: {fileID: 6397863731145337150}
+  - component: {fileID: 1479970062003500895}
   m_Layer: 0
   m_Name: igla
   m_TagString: Untagged
@@ -179,7 +180,7 @@ Transform:
   - {fileID: 3425697508527286166}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3211905280693439383
+--- !u!114 &6397863731145337150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,7 +189,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 5366666907418422769}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd21d16412488240862c5d91c2b7c01, type: 3}
+  m_Script: {fileID: 11500000, guid: 1831acc46cb1e1e45bde0bfc107f14e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 13
+  isUp: 1
+--- !u!114 &1479970062003500895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366666907418422769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c58e6a054f86b4e91431068b650a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lifeTime: 7
