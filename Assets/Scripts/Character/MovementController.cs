@@ -3,32 +3,26 @@ using UnityEngine.InputSystem;
 
 public class MovementController
 {
-    public MovementController(Rigidbody2D rigidbody, MovementsSettings settings, GroundChecker groundChecker)
+    public MovementController(Rigidbody2D rigidbody, MovementsSettings settings, GroundChecker groundChecker, InputSystem_Actions.PlayerActions input)
     {
         _settings = settings;
         _rigidbody = rigidbody;
         _groundChecker = groundChecker;
         
-        _input = new InputSystem_Actions();
-        
-        _walkRightAction = _input.Player.WalkRight;
-        _walkLeftAction = _input.Player.WalkLeft;
-        _jumpAction = _input.Player.Jump;
-        _resetAction = _input.Player.Reset;
+        _walkRightAction = input.WalkRight;
+        _walkLeftAction = input.WalkLeft;
+        _jumpAction = input.Jump;
+        _resetAction = input.Reset;
     }
 
     public void Start()
     {
-        _input.Player.Enable();
-        
         _jumpAction.performed += Jump;
         _resetAction.performed += Reset;
     }
     
     public void Stop()
     {
-        _input.Player.Disable();
-        
         _jumpAction.performed -= Jump;
         _resetAction.performed -= Jump;
     }
@@ -37,6 +31,8 @@ public class MovementController
     {
         if (_walkRightAction.IsPressed()) Move(RIGHT_DIRECTION);
         else if (_walkLeftAction.IsPressed()) Move(LEFT_DIRECTION);
+        
+        ApplyGravity();
     }
 
     private const float RIGHT_DIRECTION = 1f;
@@ -50,13 +46,13 @@ public class MovementController
     private GroundChecker _groundChecker;
     private MovementsSettings _settings;
 
-    private InputSystem_Actions _input;
+    private InputSystem_Actions.PlayerActions _input;
 
     private Rigidbody2D _rigidbody;
 
     private void Move(float direction)
     {
-        var force = direction * (_settings.WALK_SPEED * Time.fixedDeltaTime);
+        var force = direction * (_settings.WALK_FORCE * Time.fixedDeltaTime);
         var xVelocity = _rigidbody.velocity.x + force;
         xVelocity = Mathf.Clamp(xVelocity, -_settings.MAX_WALK_SPEED, _settings.MAX_WALK_SPEED);
         _rigidbody.velocity = new Vector2(xVelocity, _rigidbody.velocity.y);
@@ -68,7 +64,7 @@ public class MovementController
             return;
         
         var force = Vector2.up * _settings.JUMP_FORCE;
-        _rigidbody.velocity += force;
+        _rigidbody.AddForce(force);
     }
 
     private void ApplyGravity()
