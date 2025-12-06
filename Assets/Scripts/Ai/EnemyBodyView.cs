@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemyBodyView : MonoBehaviour
@@ -6,8 +7,11 @@ public class EnemyBodyView : MonoBehaviour
     [SerializeField] private PatrolEnemy _patrolEnemy;
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
+    private Vector3 _ccheScl;
+
     private void Awake()
     {
+        _ccheScl = transform.localScale;
         _patrolEnemy.OnPointArrived += PatrolEnemyOnOnPointArrived;
     }
 
@@ -18,6 +22,13 @@ public class EnemyBodyView : MonoBehaviour
 
     private void PatrolEnemyOnOnPointArrived()
     {
-        _spriteRenderer.flipX = !_patrolEnemy.IsGoingLeft;
+        if (!_patrolEnemy.IsGoingLeft)
+        {
+            transform.localScale = new Vector3(-_ccheScl.x, _ccheScl.y, _ccheScl.z);
+        } else
+        {
+            transform.localScale = _ccheScl;
+        }
+        
     }
 }
