@@ -1644,11 +1644,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5205631491994266115, guid: 0df559b9e6b6b71419be6ff5d4bbe4a6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.17
+      value: -6.31
       objectReference: {fileID: 0}
     - target: {fileID: 5205631491994266115, guid: 0df559b9e6b6b71419be6ff5d4bbe4a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.32
+      value: 7.96
       objectReference: {fileID: 0}
     - target: {fileID: 5205631491994266115, guid: 0df559b9e6b6b71419be6ff5d4bbe4a6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2297,6 +2297,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7561468606844062788, guid: cca99d7e51e16b1409c78210b21da651, type: 3}
   m_PrefabInstance: {fileID: 1827511523}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1943141661 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3452174001186453574, guid: 0df559b9e6b6b71419be6ff5d4bbe4a6, type: 3}
+  m_PrefabInstance: {fileID: 1472380973}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2096401243
 GameObject:
   m_ObjectHideFlags: 0
@@ -2359,7 +2364,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.58
+  orthographic size: 4.76
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2384,7 +2389,7 @@ Transform:
   m_GameObject: {fileID: 2096401243}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.56, y: -0.43, z: -10}
+  m_LocalPosition: {x: -7.2, y: 9.2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2402,21 +2407,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f02a7931316654db45d5cada09789d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  target: {fileID: 1943141661}
   offset: {x: 0, y: 0, z: 0}
-  cameraDelayByDistance:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   boundaries:
-  - <Height>k__BackingField: 0
-    <LeftBound>k__BackingField: -11
-    <RightBound>k__BackingField: 4.5
   - <Height>k__BackingField: 16
     <LeftBound>k__BackingField: -11
     <RightBound>k__BackingField: 18
+  - <Height>k__BackingField: 0
+    <LeftBound>k__BackingField: -11
+    <RightBound>k__BackingField: 4.5
 --- !u!1001 &3362553212155325328
 PrefabInstance:
   m_ObjectHideFlags: 0
