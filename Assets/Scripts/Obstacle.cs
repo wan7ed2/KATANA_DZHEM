@@ -8,9 +8,21 @@ public class Obstacle : MonoBehaviour
     [SerializeField] private float pushForce = 5f;
     [SerializeField] private bool shouldDestroyAfterCollision = false;
 
+    Collider2D _collider;
+
+    public void DisableDestroyingAfterCollision()
+    {
+        shouldDestroyAfterCollision = false;
+    }
+
+    private void Awake()
+    {
+        _collider = GetComponent<Collider2D>();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        var pushable = collision.gameObject.GetComponentInParent<IPushableByObstacle>();
+        var pushable = collision.gameObject.GetComponent<IPushableByObstacle>();
         if (pushable == null)
             return;
 
@@ -20,9 +32,10 @@ public class Obstacle : MonoBehaviour
 
         pushable.Push(pushDirection.normalized, pushForce);
 
-        if (shouldDestroyAfterCollision)
-        { 
-            Destroy(gameObject, 0.2f);
+        if (shouldDestroyAfterCollision && pushable != null)
+        {
+            _collider.enabled = false;
+            Destroy(this);
         }
     }
 
