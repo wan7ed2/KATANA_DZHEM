@@ -6,7 +6,6 @@ public class LuzhaOfPurityController : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Hi hitler");
         IPurifiable purifiable;
         if (!collision.gameObject.TryGetComponent<IPurifiable>(out purifiable))
             return;
@@ -19,7 +18,6 @@ public class LuzhaOfPurityController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Hi hitler");
         if (!collision.gameObject.TryGetComponent<IPurifiable>(out IPurifiable purifiable))
             return;
 
