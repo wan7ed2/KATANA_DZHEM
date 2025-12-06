@@ -1,7 +1,7 @@
 using Character;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IPushableByObstacle
+public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
 {
     [SerializeField] private MovementsSettings _movementsSettings;
     [SerializeField] private StickSettings _stickSettings;
@@ -57,5 +57,10 @@ public class Player : MonoBehaviour, IPushableByObstacle
     public void Push(Vector2 direction, float force)
     {
         _rigidbody.AddForce(direction);
+    }
+    
+    public void ApplyWind(Vector2 force)
+    {
+        _rigidbody.AddForce(force);
     }
 }

@@ -217,7 +217,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: -0.18999958}
+  m_ConnectedAnchor: {x: 0, y: -0.19000006}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1561,6 +1561,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1761142484266607739, guid: e6e976b8240df164aa10ec722f37ddbd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3698347906257719501}
+    - targetCorrespondingSourceObject: {fileID: 1761142484266607739, guid: e6e976b8240df164aa10ec722f37ddbd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4735033639494462523}
   m_SourcePrefab: {fileID: 100100000, guid: e6e976b8240df164aa10ec722f37ddbd, type: 3}
 --- !u!4 &2960520196120756797 stripped
 Transform:
@@ -1597,3 +1600,17 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
+--- !u!114 &4735033639494462523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4686865089431377882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6789012345678abcdef78901234567c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _windMultiplier: 1
+  _forceMode: 0
