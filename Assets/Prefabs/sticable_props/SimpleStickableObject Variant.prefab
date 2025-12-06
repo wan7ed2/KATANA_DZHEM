@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SimpleStickableObject Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4404674182167213826, guid: 3e232f93ef797d44aa213aea4f65b476, type: 3}
+      propertyPath: _weight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4953417035887114877, guid: 3e232f93ef797d44aa213aea4f65b476, type: 3}
       propertyPath: m_Size.x
       value: 0.32488346
