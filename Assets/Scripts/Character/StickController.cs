@@ -36,15 +36,30 @@ namespace Character
             var mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mouseWorld.z = 0f;
 
-            var currentDir = _stickPigidbody.transform.right;
             var targetDir = (mouseWorld - _stickPigidbody.transform.position).normalized;
 
             var speed = _stickSettings.ROTATE_SPEED * Time.fixedDeltaTime;
-            var currentRot = Quaternion.FromToRotation(Vector2.right, currentDir);
             var targetRot  = Quaternion.FromToRotation(Vector2.right, targetDir);
 
-            var resultRot = Quaternion.RotateTowards(currentRot, targetRot, speed);
-            _stickPigidbody.MoveRotation(resultRot);
+            var current = _stickPigidbody.transform.rotation * Quaternion.identity;
+            var delta = targetRot * Quaternion.Inverse(current);
+
+            if (delta.w < 0f)
+            {
+                delta.x = -delta.x;
+                delta.y = -delta.y;
+                delta.z = -delta.z;
+                delta.w = -delta.w;
+            }
+
+            delta.ToAngleAxis(out float angleDeg, out Vector3 axis);
+            var angleRad = angleDeg * Mathf.Deg2Rad;
+
+            var torque =
+                angleRad * axis.z * speed
+                - _stickPigidbody.angularVelocity * _stickSettings.DAMPING;
+
+            _stickPigidbody.AddTorque(torque, ForceMode2D.Force);
         }
     }
 }
