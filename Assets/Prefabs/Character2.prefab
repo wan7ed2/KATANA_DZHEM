@@ -1208,11 +1208,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movementsSettings:
     MAX_WALK_SPEED: 3
-    WALK_FORCE: 10
+    WALK_FORCE: 100
     JUMP_FORCE: 40000
     GRAVITY: 0
   _stickSettings:
-    ROTATE_SPEED: 3600
+    ROTATE_SPEED: 36000
     DAMPING: 0.2
   _rigidbody: {fileID: 8385060961309389505}
   _groundChecker: {fileID: 5861010111626730022}
@@ -1409,20 +1409,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -0.99775773
-      outSlope: -0.99775773
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
-      time: 0.9833374
-      value: 0.018867493
-      inSlope: -0.99775773
-      outSlope: -0.99775773
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
