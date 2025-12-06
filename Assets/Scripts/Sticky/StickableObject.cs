@@ -1,12 +1,15 @@
+using Character;
 using UnityEngine;
 
 /// <summary>
 /// Base implementation of IStickable. Uses parenting to attach objects.
 /// </summary>
-public class StickableObject : MonoBehaviour, IStickable
+public class StickableObject : MonoBehaviour, IStickable, IPurifiable
 {
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private Transform _targetTransform;
+    [SerializeField] private Collider2D _collider;
+    [SerializeField] private float purifyDestroyTime = 3f;
     
     private Transform _originalParent;
     private bool _isStuck;
@@ -37,7 +40,7 @@ public class StickableObject : MonoBehaviour, IStickable
             _rigidbodyOwner = _rigidbody.gameObject;
     }
     
-    public void OnStick(Transform parent, Vector2 stickPoint)
+    public void OnStick(StickyController source, Transform parent, Vector2 stickPoint)
     {
         if (_isStuck || _wasReleased)
             return;
@@ -48,7 +51,6 @@ public class StickableObject : MonoBehaviour, IStickable
             return;
         }
         
-        _stuckTo = parent.GetComponentInParent<StickyController>();
         _isStuck = true;
         
         if (_rigidbody != null)
@@ -59,8 +61,9 @@ public class StickableObject : MonoBehaviour, IStickable
         }
         
         Target.SetParent(parent);
+        _stuckTo = source;
     }
-    
+
     public void OnRelease()
     {
         if (!_isStuck)
@@ -134,5 +137,21 @@ public class StickableObject : MonoBehaviour, IStickable
             rb.freezeRotation = FreezeRotation;
             rb.sharedMaterial = Material;
         }
+    }
+
+    public void Purify()
+    {
+        if (!_isStuck)
+            return;
+        
+        _stuckTo.Release(this);
+        _collider.enabled = false;
+        
+        Destroy(gameObject, purifyDestroyTime);
+    }
+
+    public bool IsPureAlready()
+    {
+        return !_isStuck;
     }
 }

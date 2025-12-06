@@ -1,3 +1,4 @@
+using Character;
 using UnityEngine;
 
 /// <summary>
@@ -10,6 +11,6 @@ public interface IStickable
     bool IsStuck { get; }
     bool CanStick { get; }
     
-    void OnStick(Transform parent, Vector2 stickPoint);
+    void OnStick(StickyController source, Transform parent, Vector2 stickPoint);
     void OnRelease();
 }

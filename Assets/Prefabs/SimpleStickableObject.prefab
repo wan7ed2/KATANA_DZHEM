@@ -50,8 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 6865022226307587786}
   _targetTransform: {fileID: 0}
-  _disablePhysicsOnStick: 1
-  _moveToStickPoint: 0
+  _collider: {fileID: 4953417035887114877}
+  purifyDestroyTime: 3
 --- !u!114 &4404674182167213826
 MonoBehaviour:
   m_ObjectHideFlags: 0

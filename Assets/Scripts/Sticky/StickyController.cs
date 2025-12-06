@@ -62,7 +62,7 @@ public class StickyController : MonoBehaviour
             return;
             
         _stuckObjects.Add(stickable);
-        stickable.OnStick(_stickParent, stickPoint);
+        stickable.OnStick(this, _stickParent, stickPoint);
         OnObjectStuck?.Invoke(stickable);
     }
     
