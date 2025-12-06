@@ -335,6 +335,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6803114340216249, guid: 4103d339af206d542890e3c32e4816c4, type: 3}
+      propertyPath: _obstaclePushForceOverride
+      value: 12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803114340216249, guid: 4103d339af206d542890e3c32e4816c4, type: 3}
+      propertyPath: _useOverrideObstaclePushForce
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3188001246414263913, guid: 4103d339af206d542890e3c32e4816c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3

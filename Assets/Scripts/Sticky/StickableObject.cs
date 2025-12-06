@@ -10,6 +10,8 @@ public class StickableObject : MonoBehaviour, IStickable, IPurifiable
     [SerializeField] private Transform _targetTransform;
     [SerializeField] private Collider2D _collider;
     [SerializeField] private float purifyDestroyTime = 3f;
+    [SerializeField] private bool _useOverrideObstaclePushForce;
+    [SerializeField] private float _obstaclePushForceOverride = 5f;
     
     private Transform _originalParent;
     private bool _isStuck;
@@ -62,6 +64,9 @@ public class StickableObject : MonoBehaviour, IStickable, IPurifiable
         
         Target.SetParent(parent);
         _stuckTo = source;
+
+        if (_useOverrideObstaclePushForce)
+            GetComponent<Obstacle>()?.OverridePushForce(_obstaclePushForceOverride);
     }
 
     public void OnRelease()
@@ -81,6 +86,9 @@ public class StickableObject : MonoBehaviour, IStickable, IPurifiable
         }
             
         _stuckTo = null;
+
+        if (_useOverrideObstaclePushForce)
+            GetComponent<Obstacle>()?.ResetPushForce();
     }
     
     public void ResetCanStick()

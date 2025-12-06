@@ -9,14 +9,26 @@ public class Obstacle : MonoBehaviour
     [SerializeField] private bool shouldDestroyAfterCollision = false;
 
     Collider2D _collider;
+    float pushForceCached;
 
     public void DisableDestroyingAfterCollision()
     {
         shouldDestroyAfterCollision = false;
     }
 
+    public void OverridePushForce(float newPushForce) 
+    {
+        pushForce = newPushForce;
+    }
+
+    public void ResetPushForce()
+    {
+        pushForce = pushForceCached;
+    }
+
     private void Awake()
     {
+        pushForceCached = pushForce;
         _collider = GetComponent<Collider2D>();
     }
 
