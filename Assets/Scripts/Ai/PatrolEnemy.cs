@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AiBehaviour : MonoBehaviour, IPushableByObstacle
+public class PatrolEnemy : MonoBehaviour, IPushableByObstacle
 {
     [SerializeField] private float _patrolSpeed = 1f;
     [SerializeField] private List<Transform> _patrolPoints;
@@ -13,15 +13,13 @@ public class AiBehaviour : MonoBehaviour, IPushableByObstacle
         _isPushed = true;
 
         Rigidbody2D rb;
-        TryGetComponent<Rigidbody2D>(out rb);
+        TryGetComponent(out rb);
 
         if (rb != null)
         {
             rb.AddForce(direction * force);
             rb.bodyType = RigidbodyType2D.Dynamic;
         }
-
-        Invoke("ResetPush", 2f);
     }
 
     private void Update()
@@ -48,17 +46,4 @@ public class AiBehaviour : MonoBehaviour, IPushableByObstacle
 
     private int _currentPointId = 0;
     private bool _isPushed = false;
-
-    private void ResetPush()
-    {
-        _isPushed = false;
-
-        Rigidbody2D rb;
-        TryGetComponent<Rigidbody2D>(out rb);
-
-        if (rb != null)
-        {
-            rb.bodyType = RigidbodyType2D.Kinematic;
-        }
-    }
 }
