@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8101450556072407452}
-  - component: {fileID: 1187553189577651580}
   - component: {fileID: 1150898422412928087}
   - component: {fileID: 8725304250926021661}
   - component: {fileID: 1939341542916141243}
@@ -37,27 +36,6 @@ Transform:
   - {fileID: 6294244208538794889}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!231 &1187553189577651580
-SpringJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1761142484266607739}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_BreakAction: 3
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 0
-  m_Distance: 0.5
-  m_DampingRatio: 1
-  m_Frequency: 10
 --- !u!50 &1150898422412928087
 Rigidbody2D:
   serializedVersion: 4
