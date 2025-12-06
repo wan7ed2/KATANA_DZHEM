@@ -22,12 +22,14 @@ public class AcceleratedJump : MonoBehaviour
     private bool _isJumping;
     private float _fallTime;
 
-    public void Jump(float modifier)
+    public void Jump(float modifier) => JumpInternal(modifier, jumpForce, jumpTime);
+
+    public void OnTriggerStay2D(Collider2D other)
     {
-        if (_isJumping || !groundChecker.IsGrounded)
+        if (!other.gameObject.TryGetComponent<JumpZone>(out var zone))
             return;
 
-        StartCoroutine(JumpCoroutine(modifier));
+        JumpInternal(1, zone.jumpForce, zone.jumpTime);
     }
 
     public void Tick()
@@ -36,17 +38,25 @@ public class AcceleratedJump : MonoBehaviour
             ApplyGravity();
     }
 
-    private IEnumerator JumpCoroutine(float modifier)
+    private void JumpInternal(float modifier, float force, float time)
+    {
+        if (_isJumping || !groundChecker.IsGrounded)
+            return;
+
+        StartCoroutine(JumpCoroutine(modifier, force, time));
+    }
+
+    private IEnumerator JumpCoroutine(float modifier, float force, float time)
     {
         _isJumping = true;
         movementAnimator.StartJump();
 
-        for (var t = 0f; t <= jumpTime; t += Time.fixedDeltaTime)
+        for (var t = 0f; t <= time; t += Time.fixedDeltaTime)
         {
             if (HasObstacleAbove())
                 break;
 
-            playerRigidBody.velocity += Vector2.up * (jumpCurve.Evaluate(Mathf.InverseLerp(0f, jumpTime, t)) * modifier * jumpForce);
+            playerRigidBody.velocity += Vector2.up * (jumpCurve.Evaluate(Mathf.InverseLerp(0f, time, t)) * modifier * force);
             yield return _waitForFixedUpdate;
         }
 
