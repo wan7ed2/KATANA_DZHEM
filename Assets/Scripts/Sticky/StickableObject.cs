@@ -146,6 +146,7 @@ public class StickableObject : MonoBehaviour, IStickable, IPurifiable
         
         _stuckTo.Release(this);
         _collider.enabled = false;
+        _rigidbody.isKinematic = false;
         
         Destroy(gameObject, purifyDestroyTime);
     }
