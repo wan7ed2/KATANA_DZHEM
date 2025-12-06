@@ -10,6 +10,7 @@ public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
     [SerializeField] private Rigidbody2D _stickRigidbody;
     [SerializeField] private CharacterStatusEffectHandler _statusHandler;
     [SerializeField] private AcceleratedJump _acceleratedJump;
+    [SerializeField] private MovementAnimator _movementAnimator;
 
     public Rigidbody2D Rigidbody => _rigidbody;
     public MovementController MovementController => _movementController;
@@ -29,6 +30,7 @@ public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
             _groundChecker, 
             _input.Player,
             _acceleratedJump,
+            _movementAnimator,
             _statusHandler
         );
     }

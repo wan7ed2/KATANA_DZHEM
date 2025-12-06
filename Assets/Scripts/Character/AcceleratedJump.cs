@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AcceleratedJump : MonoBehaviour
 {
+    [SerializeField] private MovementAnimator movementAnimator;
     [SerializeField] private Rigidbody2D playerRigidBody;
     [SerializeField] private GroundChecker groundChecker;
     [Header("Settings")]
@@ -38,6 +39,7 @@ public class AcceleratedJump : MonoBehaviour
     private IEnumerator JumpCoroutine(float modifier)
     {
         _isJumping = true;
+        movementAnimator.StartJump();
 
         for (var t = 0f; t <= jumpTime; t += Time.fixedDeltaTime)
         {
@@ -49,6 +51,7 @@ public class AcceleratedJump : MonoBehaviour
         }
 
         _isJumping = false;
+        movementAnimator.StopJump();
     }
 
     private void ApplyGravity()
