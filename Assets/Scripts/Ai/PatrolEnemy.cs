@@ -12,6 +12,10 @@ public class PatrolEnemy : MonoBehaviour
     [SerializeField] private List<Transform> _patrolPoints;
     [SerializeField] private Rigidbody2D _rigidbody;
 
+    private bool _isGoingLeft;
+
+    public bool IsGoingLeft => _isGoingLeft;
+
     private void FixedUpdate()
     {
         if (_rigidbody == null)
@@ -26,6 +30,7 @@ public class PatrolEnemy : MonoBehaviour
         if (Mathf.Approximately(currentPos.x, patrolPos.x) && Mathf.Approximately(currentPos.y, patrolPos.y))
         {
             _currentPointId = Random.Range(0, _patrolPoints.Count);
+            _isGoingLeft = _patrolPoints[_currentPointId].position.x < _rigidbody.position.x;
             OnPointArrived?.Invoke();
         }
 
