@@ -7,10 +7,6 @@ public class StickableObject : MonoBehaviour, IStickable
 {
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private Transform _targetTransform;
-    [SerializeField] private bool _disablePhysicsOnStick = true;
-    
-    [Tooltip("If true, moves object center to stick point. If false, keeps current position relative to parent.")]
-    [SerializeField] private bool _moveToStickPoint = false;
     
     private Transform _originalParent;
     private bool _isStuck;
@@ -55,7 +51,7 @@ public class StickableObject : MonoBehaviour, IStickable
         _stuckTo = parent.GetComponentInParent<StickyController>();
         _isStuck = true;
         
-        if (_disablePhysicsOnStick && _rigidbody != null)
+        if (_rigidbody != null)
         {
             _savedRigidbodyData = new RigidbodyData(_rigidbody);
             Object.Destroy(_rigidbody);
@@ -63,9 +59,6 @@ public class StickableObject : MonoBehaviour, IStickable
         }
         
         Target.SetParent(parent);
-        
-        if (_moveToStickPoint)
-            Target.position = stickPoint;
     }
     
     public void OnRelease()
@@ -78,7 +71,7 @@ public class StickableObject : MonoBehaviour, IStickable
         
         Target.SetParent(_originalParent);
         
-        if (_disablePhysicsOnStick && _rigidbodyOwner != null)
+        if (_rigidbodyOwner != null)
         {
             _rigidbody = _rigidbodyOwner.AddComponent<Rigidbody2D>();
             _savedRigidbodyData.ApplyTo(_rigidbody);
@@ -87,9 +80,6 @@ public class StickableObject : MonoBehaviour, IStickable
         _stuckTo = null;
     }
     
-    /// <summary>
-    /// Resets the released state, allowing the object to stick again.
-    /// </summary>
     public void ResetCanStick()
     {
         _wasReleased = false;
