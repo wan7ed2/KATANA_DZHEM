@@ -15,7 +15,7 @@ public class UtilityEditorFunctions
 
             var size = spriteRenderer.size;
             boxCollider.size = spriteRenderer.size;
-            boxCollider.offset = size / 2f;
+            boxCollider.offset = new Vector2(Mathf.Abs(size.x / 2f), Mathf.Abs(size.y / 2f));
         }
     }
 }
