@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7561468606844062788}
   - component: {fileID: 460547912146291878}
   - component: {fileID: 4909081508463950899}
-  - component: {fileID: 8367017903020017183}
+  - component: {fileID: 1384274276814650962}
   m_Layer: 6
   m_Name: bounce_rune_platform
   m_TagString: Untagged
@@ -217,7 +217,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8367017903020017183
+--- !u!114 &1384274276814650962
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,11 +226,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4782531773378068865}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4127c1f559742f0498941779a26adf52, type: 3}
+  m_Script: {fileID: 11500000, guid: 9eac6095dfccf8446861766e904ae954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: 0}
-  force: 0
+  <jumpForce>k__BackingField: 0
+  <jumpTime>k__BackingField: 0
 --- !u!1 &5038201007499904706
 GameObject:
   m_ObjectHideFlags: 0
