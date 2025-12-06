@@ -1,64 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class PatrolEnemy : MonoBehaviour, IPushableByObstacle
+public class PatrolEnemy : MonoBehaviour
 {
+    public event Action OnPointArrived;
+    
     [SerializeField] private float _patrolSpeed = 1f;
-    [SerializeReference] private GameObject setupParent;
+    [SerializeField] private List<Transform> _patrolPoints;
+    [SerializeField] private Rigidbody2D _rigidbody;
 
-    private void Awake()
+    private void FixedUpdate()
     {
-        var setupChilds = setupParent.GetComponentsInChildren<Transform>();
-
-        foreach (var setupChild in setupChilds)
-        {
-            if (setupChild.name.StartsWith("patrolPoint"))
-            {
-                _patrolPoints.Add(setupChild.transform);
-            }
-        }
-    }
-
-    public void Push(Vector2 direction, float force)
-    {
-        Debug.Log("patrol pushed");
-        _isPushed = true;
-
-        Rigidbody2D rb;
-        TryGetComponent(out rb);
-
-        if (rb != null)
-        {
-            rb.AddForce(direction * force, ForceMode2D.Impulse);
-            rb.bodyType = RigidbodyType2D.Dynamic;
-        }
-    }
-
-    private void Update()
-    {
-        if (_isPushed)
+        if (_rigidbody == null)
             return;
-
+        
         if (_patrolPoints.Count == 0)
             return;
 
-        if (transform.position.Equals(_patrolPoints[_currentPointId].position))
+        var currentPos = _rigidbody.position;
+        var patrolPos = _patrolPoints[_currentPointId].position;
+        
+        if (Mathf.Approximately(currentPos.x, patrolPos.x) && Mathf.Approximately(currentPos.y, patrolPos.y))
         {
             _currentPointId = Random.Range(0, _patrolPoints.Count);
+            OnPointArrived?.Invoke();
         }
 
         var dir = (_patrolPoints[_currentPointId].position - transform.position).normalized;
         var maxStep = (_patrolPoints[_currentPointId].position - transform.position).magnitude;
-        var step = Mathf.Clamp(_patrolSpeed * Time.deltaTime, 0, maxStep);
+        var step = Mathf.Clamp(_patrolSpeed * Time.fixedDeltaTime, 0, maxStep);
 
-        transform.Translate(dir * step);
+        var dir2d = new Vector2(dir.x, dir.y);
+        var targetPos = _rigidbody.position + dir2d * step;
+        _rigidbody.MovePosition(targetPos);
     }
 
     // private
 
-    private List<Transform> _patrolPoints = new List<Transform>();
     private int _currentPointId = 0;
-
-    private bool _isPushed = false;
 }

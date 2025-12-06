@@ -60,7 +60,7 @@ public class StickyController : MonoBehaviour
     {
         if (!stickable.CanStick || _stuckObjects.Contains(stickable))
             return;
-            
+        
         _stuckObjects.Add(stickable);
         stickable.OnStick(this, _stickParent, stickPoint);
         OnObjectStuck?.Invoke(stickable);
