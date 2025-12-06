@@ -67,7 +67,7 @@ public class SoundSource : MonoBehaviour
 
     public void Stop()
     {
-        _audioSource.Stop();
+        if (_audioSource != null) _audioSource.Stop();
         Finished?.Invoke(this);
         enabled = false;
     }

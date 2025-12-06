@@ -2233,6 +2233,12 @@ MonoBehaviour:
   _statusHandler: {fileID: 7746745772505608059}
   _acceleratedJump: {fileID: 8109882691235832309}
   _movementAnimator: {fileID: 2241476726404655710}
+  _soundView:
+    _hitSound: {fileID: 11400000, guid: 8cfa330e227d9bd4f993da34da2c69c9, type: 2}
+    _fallSadSound: {fileID: 11400000, guid: 2e76998c15720f64fb92848195b93b2f, type: 2}
+    _jumpSound: {fileID: 11400000, guid: e3afd1dbdde0aea4bbc3aa7f3c83caf5, type: 2}
+    _hitSleepTime: 2
+    _distanceFallToSound: 12
 --- !u!114 &7746745772505608059
 MonoBehaviour:
   m_ObjectHideFlags: 0

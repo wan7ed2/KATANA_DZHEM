@@ -1,8 +1,11 @@
+using System;
 using Character;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
 {
+    public event Action OnHit;
+    
     [SerializeField] private MovementsSettings _movementsSettings;
     [SerializeField] private StickSettings _stickSettings;
     [SerializeField] private Rigidbody2D _rigidbody;
@@ -11,6 +14,8 @@ public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
     [SerializeField] private CharacterStatusEffectHandler _statusHandler;
     [SerializeField] private AcceleratedJump _acceleratedJump;
     [SerializeField] private MovementAnimator _movementAnimator;
+    
+    [SerializeField] private CharacterSoundView _soundView;
 
     public Rigidbody2D Rigidbody => _rigidbody;
     public MovementController MovementController => _movementController;
@@ -21,6 +26,8 @@ public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
     
     private void Awake()
     {
+        _soundView.Init(this, _groundChecker);
+        
         _input = new InputSystem_Actions();
         _groundChecker.Init(_rigidbody);
         _stickController = new StickController(_input.Player, _stickRigidbody, _stickSettings);
@@ -37,6 +44,7 @@ public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
 
     private void Start()
     {
+        _soundView.Start();
         _movementController.Start();
         _stickController.Start();
         _input.Enable();
@@ -52,6 +60,7 @@ public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
 
     private void OnDestroy()
     {
+        _soundView.Stop();
         _input.Disable();
         _movementController.Stop();
         _stickController.Stop();
@@ -59,7 +68,8 @@ public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
 
     public void Push(Vector2 direction, float force)
     {
-        _rigidbody.AddForce(direction);
+        _movementController.Push(direction, force);
+        OnHit?.Invoke();
     }
     
     public void ApplyWind(Vector2 force)
