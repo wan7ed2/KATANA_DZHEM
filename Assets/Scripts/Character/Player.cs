@@ -2,7 +2,7 @@ using System;
 using Character;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IPushableByObstacle
 {
     [SerializeField] private MovementsSettings _movementsSettings;
     [SerializeField] private StickSettings _stickSettings;
@@ -43,5 +43,10 @@ public class Player : MonoBehaviour
         _input.Disable();
         _movementController.Stop();
         _stickController.Stop();
+    }
+
+public void Push(Vector2 direction, float force)
+    {
+        _rigidbody.AddForce(direction);
     }
 }
