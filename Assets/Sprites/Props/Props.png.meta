@@ -101,11 +101,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1526
+        y: 1536
         width: 256
-        height: 266
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -122,11 +122,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 1526
+        y: 1536
         width: 256
-        height: 266
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -143,11 +143,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 1526
+        y: 1536
         width: 256
-        height: 266
+        height: 256
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,6 +155,48 @@ TextureImporter:
       bones: []
       spriteID: 96212098267e8ce4ba66d34d73b38432
       internalID: -556782633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43fe05e001c151f42952db318b7cce20
+      internalID: -459858295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Props_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fb50dee1e57aa0458bedac471e5180d
+      internalID: -998576465
       vertices: []
       indices: 
       edges: []
@@ -174,6 +216,12 @@ TextureImporter:
       Props_1: -361143058
       Props_2: -556782633
       Props_3: -459858295
+      Props_4: -998576465
+      Props_5: 1599448992
+      Props_6: -1698623674
+      Props_7: -1122335023
+      Props_8: -246082373
+      Props_9: 403997450
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
