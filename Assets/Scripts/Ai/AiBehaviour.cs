@@ -14,7 +14,7 @@ public class AiBehaviour : MonoBehaviour
 
         if (transform.position.Equals(_patrolPoints[_currentPointId].position))
         {
-            _currentPointId = (_currentPointId + 1) % _patrolPoints.Count;
+            _currentPointId = Random.Range(0, _patrolPoints.Count);
         }
 
         var dir = (_patrolPoints[_currentPointId].position - transform.position).normalized;
