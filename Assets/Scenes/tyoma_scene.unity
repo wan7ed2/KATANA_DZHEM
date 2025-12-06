@@ -7226,6 +7226,10 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 3.4803796
       objectReference: {fileID: 0}
+    - target: {fileID: 460547912146291878, guid: eb0d20b7b5d68d04d8fc43349cf2d5ca, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1384274276814650962, guid: eb0d20b7b5d68d04d8fc43349cf2d5ca, type: 3}
       propertyPath: <jumpTime>k__BackingField
       value: 0.3
