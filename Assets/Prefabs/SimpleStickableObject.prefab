@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4404674182167213826}
   - component: {fileID: 4953417035887114877}
   - component: {fileID: 6865022226307587786}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SimpleStickableObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2939872249460186}
   - component: {fileID: 8402052205148204567}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 9-Sliced
   m_TagString: Untagged
   m_Icon: {fileID: 0}
