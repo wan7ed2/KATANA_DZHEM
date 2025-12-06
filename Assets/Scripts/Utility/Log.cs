@@ -1,6 +1,4 @@
-using System.Diagnostics;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 /// <summary>
 /// Интерфейс для объектов с логированием.
@@ -13,45 +11,48 @@ public interface ILoggable
 
 /// <summary>
 /// Extension methods для логирования.
-/// Вызовы автоматически удаляются из билда (Conditional атрибут).
 /// </summary>
 public static class LogExtensions
 {
-    [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
     public static void LogInfo(this ILoggable loggable, string message)
     {
-        Debug.Log(Format(loggable.LogCategory, message));
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.Log($"[{loggable.LogCategory}] {message}");
+#endif
     }
     
-    [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
     public static void LogInfo(this ILoggable loggable, string message, Object context)
     {
-        Debug.Log(Format(loggable.LogCategory, message), context);
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.Log($"[{loggable.LogCategory}] {message}", context);
+#endif
     }
     
-    [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
     public static void LogWarning(this ILoggable loggable, string message)
     {
-        Debug.LogWarning(Format(loggable.LogCategory, message));
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.LogWarning($"[{loggable.LogCategory}] {message}");
+#endif
     }
     
-    [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
     public static void LogWarning(this ILoggable loggable, string message, Object context)
     {
-        Debug.LogWarning(Format(loggable.LogCategory, message), context);
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.LogWarning($"[{loggable.LogCategory}] {message}", context);
+#endif
     }
     
-    [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
     public static void LogError(this ILoggable loggable, string message)
     {
-        Debug.LogError(Format(loggable.LogCategory, message));
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.LogError($"[{loggable.LogCategory}] {message}");
+#endif
     }
     
-    [Conditional("UNITY_EDITOR"), Conditional("DEVELOPMENT_BUILD")]
     public static void LogError(this ILoggable loggable, string message, Object context)
     {
-        Debug.LogError(Format(loggable.LogCategory, message), context);
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.LogError($"[{loggable.LogCategory}] {message}", context);
+#endif
     }
-    
-    private static string Format(string category, string message) => $"[{category}] {message}";
 }

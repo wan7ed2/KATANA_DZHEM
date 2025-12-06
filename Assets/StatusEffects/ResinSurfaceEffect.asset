@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d30aaeb766655a548b86fd83d38d0b57, type: 3}
+  m_Name: ResinSurfaceEffect
+  m_EditorClassIdentifier: 
+  DisplayName: ResinSurface_Default
+  GizmoColor: {r: 0.1981132, g: 0.108752005, b: 0.04392132, a: 1}
+  Modifiers:
+    SpeedMultiplier: 0.4
+    JumpMultiplier: 0.5
+    Friction: 1
+    AccelerationMultiplier: 0.5
+  Duration: 2
+  FadeOut: 1

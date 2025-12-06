@@ -1,4 +1,3 @@
-using System;
 using Character;
 using UnityEngine;
 
@@ -9,9 +8,9 @@ public class Player : MonoBehaviour, IPushableByObstacle
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private GroundChecker _groundChecker;
     [SerializeField] private Rigidbody2D _stickRigidbody;
+    [SerializeField] private CharacterStatusEffectHandler _statusHandler;
 
     public Rigidbody2D Rigidbody => _rigidbody;
-
     public MovementController MovementController => _movementController;
     
     private MovementController _movementController;
@@ -23,7 +22,13 @@ public class Player : MonoBehaviour, IPushableByObstacle
         _input = new InputSystem_Actions();
         _groundChecker.Init(_rigidbody);
         _stickController = new StickController(_input.Player, _stickRigidbody, _stickSettings);
-        _movementController = new MovementController(_rigidbody, _movementsSettings, _groundChecker, _input.Player);
+        _movementController = new MovementController(
+            _rigidbody, 
+            _movementsSettings, 
+            _groundChecker, 
+            _input.Player,
+            _statusHandler
+        );
     }
 
     private void Start()
@@ -47,7 +52,7 @@ public class Player : MonoBehaviour, IPushableByObstacle
         _stickController.Stop();
     }
 
-public void Push(Vector2 direction, float force)
+    public void Push(Vector2 direction, float force)
     {
         _rigidbody.AddForce(direction);
     }

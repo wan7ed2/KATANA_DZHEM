@@ -3,11 +3,17 @@ using UnityEngine.InputSystem;
 
 public class MovementController : IPushableByObstacle
 {
-    public MovementController(Rigidbody2D rigidbody, MovementsSettings settings, GroundChecker groundChecker, InputSystem_Actions.PlayerActions input)
+    public MovementController(
+        Rigidbody2D rigidbody, 
+        MovementsSettings settings, 
+        GroundChecker groundChecker, 
+        InputSystem_Actions.PlayerActions input,
+        CharacterStatusEffectHandler statusHandler = null)
     {
         _settings = settings;
         _rigidbody = rigidbody;
         _groundChecker = groundChecker;
+        _statusHandler = statusHandler;
         
         _walkRightAction = input.WalkRight;
         _walkLeftAction = input.WalkLeft;
@@ -24,13 +30,14 @@ public class MovementController : IPushableByObstacle
     public void Stop()
     {
         _jumpAction.performed -= Jump;
-        _resetAction.performed -= Jump;
+        _resetAction.performed -= Reset;
     }
 
     public void Update()
     {
         if (_walkRightAction.IsPressed()) Move(RIGHT_DIRECTION);
         else if (_walkLeftAction.IsPressed()) Move(LEFT_DIRECTION);
+        else ApplyFriction();
         
         ApplyGravity();
     }
@@ -50,17 +57,46 @@ public class MovementController : IPushableByObstacle
     
     private GroundChecker _groundChecker;
     private MovementsSettings _settings;
+    private CharacterStatusEffectHandler _statusHandler;
 
     private InputSystem_Actions.PlayerActions _input;
 
     private Rigidbody2D _rigidbody;
 
+    private StatusEffectModifiers GetModifiers()
+    {
+        return _statusHandler != null 
+            ? _statusHandler.CurrentModifiers 
+            : StatusEffectModifiers.Default;
+    }
+
     private void Move(float direction)
     {
-        var force = direction * (_settings.WALK_FORCE * Time.fixedDeltaTime);
+        var mods = GetModifiers();
+        
+        var force = direction * (_settings.WALK_FORCE * mods.AccelerationMultiplier * Time.fixedDeltaTime);
         var xVelocity = _rigidbody.velocity.x + force;
-        xVelocity = Mathf.Clamp(xVelocity, -_settings.MAX_WALK_SPEED, _settings.MAX_WALK_SPEED);
+        
+        var maxSpeed = _settings.MAX_WALK_SPEED * mods.SpeedMultiplier;
+        xVelocity = Mathf.Clamp(xVelocity, -maxSpeed, maxSpeed);
+        
         _rigidbody.velocity = new Vector2(xVelocity, _rigidbody.velocity.y);
+    }
+    
+    private void ApplyFriction()
+    {
+        var mods = GetModifiers();
+        
+        // Friction: 1 = быстро тормозим, 0 = скользим (лёд)
+        float minDecel = 0.99f;  // Почти нет торможения (лёд)
+        float maxDecel = 0.85f;  // Сильное торможение
+        
+        var deceleration = Mathf.Lerp(minDecel, maxDecel, mods.Friction);
+        
+        _rigidbody.velocity = new Vector2(
+            _rigidbody.velocity.x * deceleration, 
+            _rigidbody.velocity.y
+        );
     }
     
     private void Jump(InputAction.CallbackContext ctx)
@@ -68,7 +104,8 @@ public class MovementController : IPushableByObstacle
         if (!_groundChecker.IsGrounded)
             return;
         
-        var force = Vector2.up * _settings.JUMP_FORCE;
+        var mods = GetModifiers();
+        var force = Vector2.up * (_settings.JUMP_FORCE * mods.JumpMultiplier);
         _rigidbody.AddForce(force);
     }
 
