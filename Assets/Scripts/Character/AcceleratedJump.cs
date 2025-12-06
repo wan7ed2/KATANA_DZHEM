@@ -44,7 +44,7 @@ public class AcceleratedJump : MonoBehaviour
             if (HasObstacleAbove())
                 break;
 
-            playerRigidBody.velocity += Vector2.up * (jumpCurve.Evaluate(t) * modifier * jumpForce);
+            playerRigidBody.velocity += Vector2.up * (jumpCurve.Evaluate(Mathf.InverseLerp(0f, jumpTime, t) * modifier * jumpForce));
             yield return _waitForFixedUpdate;
         }
 

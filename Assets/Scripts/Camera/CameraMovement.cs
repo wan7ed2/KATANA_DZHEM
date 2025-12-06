@@ -6,6 +6,7 @@ public class CameraMovement : MonoBehaviour
 {
     [SerializeField] private Transform target;
     [SerializeField] private Vector3 offset;
+    [SerializeField] private float lerpSpeed = 0.9f;
     [SerializeField] List<CameraBoundaries> boundaries;
     
     private Camera _camera;
@@ -24,8 +25,8 @@ public class CameraMovement : MonoBehaviour
         targetPosition.x = Mathf.Clamp(targetPosition.x, currentBoundary.LeftBound + cameraRect.width / 2f, currentBoundary.RightBound - cameraRect.width / 2f);
         targetPosition.z = transform.position.z;
         targetPosition += offset;
-        
-        transform.position = targetPosition;
+
+        transform.position = Vector3.Lerp(transform.position, targetPosition, lerpSpeed);
     }
 
     private Rect GetCameraRect()
