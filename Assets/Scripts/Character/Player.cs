@@ -10,7 +10,6 @@ public class Player : MonoBehaviour, IPushableByObstacle
     [SerializeField] private Rigidbody2D _stickRigidbody;
     [SerializeField] private CharacterStatusEffectHandler _statusHandler;
     [SerializeField] private AcceleratedJump _acceleratedJump;
-    [SerializeField] private MovementWeightRestriction _movementWeightRestriction;
 
     public Rigidbody2D Rigidbody => _rigidbody;
     public MovementController MovementController => _movementController;
