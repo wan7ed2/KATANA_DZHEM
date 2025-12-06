@@ -49,7 +49,7 @@ public class CameraMovement : MonoBehaviour
         return boundaries[^1];
     }
 
-    [ExecuteAlways]
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         var boundary = boundaries[0];
@@ -77,4 +77,5 @@ public class CameraMovement : MonoBehaviour
         Gizmos.DrawRay(left, Vector3.down * 100f);
         Gizmos.DrawRay(right, Vector3.down * 100f);
     }
+#endif
 }

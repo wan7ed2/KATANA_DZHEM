@@ -8,6 +8,7 @@ public class MovementController : IPushableByObstacle
         MovementsSettings settings, 
         GroundChecker groundChecker, 
         InputSystem_Actions.PlayerActions input,
+        AcceleratedJump acceleratedJump,
         CharacterStatusEffectHandler statusHandler = null)
     {
         _settings = settings;
@@ -19,6 +20,7 @@ public class MovementController : IPushableByObstacle
         _walkLeftAction = input.WalkLeft;
         _jumpAction = input.Jump;
         _resetAction = input.Reset;
+        _acceleratedJump = acceleratedJump;
     }
 
     public void Start()
@@ -38,8 +40,6 @@ public class MovementController : IPushableByObstacle
         if (_walkRightAction.IsPressed()) Move(RIGHT_DIRECTION);
         else if (_walkLeftAction.IsPressed()) Move(LEFT_DIRECTION);
         else ApplyFriction();
-        
-        ApplyGravity();
     }
     
     public void Push(Vector2 direction, float force)
@@ -62,6 +62,7 @@ public class MovementController : IPushableByObstacle
     private InputSystem_Actions.PlayerActions _input;
 
     private Rigidbody2D _rigidbody;
+    private AcceleratedJump _acceleratedJump;
 
     private StatusEffectModifiers GetModifiers()
     {
@@ -101,18 +102,7 @@ public class MovementController : IPushableByObstacle
     
     private void Jump(InputAction.CallbackContext ctx)
     {
-        if (!_groundChecker.IsGrounded)
-            return;
-        
-        var mods = GetModifiers();
-        var force = Vector2.up * (_settings.JUMP_FORCE * mods.JumpMultiplier);
-        _rigidbody.AddForce(force);
-    }
-
-    private void ApplyGravity()
-    {
-        var gravity = Time.fixedDeltaTime * _settings.GRAVITY;
-        _rigidbody.velocity += Vector2.down * gravity; 
+        _acceleratedJump.Jump(GetModifiers().JumpMultiplier);
     }
 
     private void Reset(InputAction.CallbackContext ctx)

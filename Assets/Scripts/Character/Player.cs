@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, IPushableByObstacle
     [SerializeField] private GroundChecker _groundChecker;
     [SerializeField] private Rigidbody2D _stickRigidbody;
     [SerializeField] private CharacterStatusEffectHandler _statusHandler;
+    [SerializeField] private AcceleratedJump _acceleratedJump;
 
     public Rigidbody2D Rigidbody => _rigidbody;
     public MovementController MovementController => _movementController;
@@ -27,6 +28,7 @@ public class Player : MonoBehaviour, IPushableByObstacle
             _movementsSettings, 
             _groundChecker, 
             _input.Player,
+            _acceleratedJump,
             _statusHandler
         );
     }
