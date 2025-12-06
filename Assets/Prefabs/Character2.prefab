@@ -944,6 +944,8 @@ GameObject:
   - component: {fileID: 2960520196120756797}
   - component: {fileID: 5260426881934264029}
   - component: {fileID: 6233847411061102582}
+  - component: {fileID: 6809806419861921109}
+  - component: {fileID: 688337608301572743}
   m_Layer: 0
   m_Name: Bulava
   m_TagString: Untagged
@@ -1016,6 +1018,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &6809806419861921109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4686865089431377882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af9a15b626060747a2fadbc1f2138b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stickyController: {fileID: 688337608301572743}
+  _targetRigidbody: {fileID: 6233847411061102582}
+--- !u!114 &688337608301572743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4686865089431377882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e5f6789012345678abcdef12345678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6492643534063044268
 GameObject:
   m_ObjectHideFlags: 0
