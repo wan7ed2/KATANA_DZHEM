@@ -1,19 +1,30 @@
 using UnityEngine;
 
 /// <summary>
-/// Base implementation of IStickable. Uses FixedJoint2D to attach while keeping physics active.
+/// Base implementation of IStickable. Uses parenting to attach objects.
 /// </summary>
 public class StickableObject : MonoBehaviour, IStickable
 {
     [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private Transform _targetTransform;
+    [SerializeField] private bool _disablePhysicsOnStick = true;
     
-    private FixedJoint2D _joint;
+    [Tooltip("If true, moves object center to stick point. If false, keeps current position relative to parent.")]
+    [SerializeField] private bool _moveToStickPoint = false;
+    
+    private Transform _originalParent;
     private bool _isStuck;
+    private bool _wasReleased;
     private StickyController _stuckTo;
+    private RigidbodyData _savedRigidbodyData;
+    private GameObject _rigidbodyOwner;
+    
+    private Transform Target => _targetTransform != null ? _targetTransform : transform;
     
     public Rigidbody2D Rigidbody => _rigidbody;
     public GameObject GameObject => gameObject;
     public bool IsStuck => _isStuck;
+    public bool CanStick => !_isStuck && !_wasReleased;
     
 #if UNITY_EDITOR
     private void OnValidate()
@@ -22,26 +33,39 @@ public class StickableObject : MonoBehaviour, IStickable
             Debug.LogWarning($"[{nameof(StickableObject)}] Rigidbody is not assigned on {gameObject.name}", this);
     }
 #endif
-    
-    public void OnStick(Rigidbody2D targetRigidbody, Vector2 stickPoint)
+
+    private void Awake()
     {
-        if (_isStuck)
+        _originalParent = Target.parent;
+        if (_rigidbody != null)
+            _rigidbodyOwner = _rigidbody.gameObject;
+    }
+    
+    public void OnStick(Transform parent, Vector2 stickPoint)
+    {
+        if (_isStuck || _wasReleased)
             return;
         
-        if (targetRigidbody == null)
+        if (parent == null)
         {
-            Debug.LogWarning($"[{nameof(StickableObject)}] Cannot stick - target Rigidbody2D is null", this);
+            Debug.LogWarning($"[{nameof(StickableObject)}] Cannot stick - parent is null", this);
             return;
         }
         
-        _stuckTo = targetRigidbody.GetComponentInChildren<StickyController>();
+        _stuckTo = parent.GetComponentInParent<StickyController>();
         _isStuck = true;
         
-        _joint = _rigidbody.gameObject.AddComponent<FixedJoint2D>();
-        _joint.connectedBody = targetRigidbody;
-        _joint.breakForce = Mathf.Infinity;
-        _joint.breakTorque = Mathf.Infinity;
-        _joint.autoConfigureConnectedAnchor = true;
+        if (_disablePhysicsOnStick && _rigidbody != null)
+        {
+            _savedRigidbodyData = new RigidbodyData(_rigidbody);
+            Object.Destroy(_rigidbody);
+            _rigidbody = null;
+        }
+        
+        Target.SetParent(parent);
+        
+        if (_moveToStickPoint)
+            Target.position = stickPoint;
     }
     
     public void OnRelease()
@@ -50,21 +74,75 @@ public class StickableObject : MonoBehaviour, IStickable
             return;
             
         _isStuck = false;
-        _stuckTo = null;
+        _wasReleased = true;
         
-        if (_joint != null)
+        Target.SetParent(_originalParent);
+        
+        if (_disablePhysicsOnStick && _rigidbodyOwner != null)
         {
-            Destroy(_joint);
-            _joint = null;
+            _rigidbody = _rigidbodyOwner.AddComponent<Rigidbody2D>();
+            _savedRigidbodyData.ApplyTo(_rigidbody);
         }
+            
+        _stuckTo = null;
+    }
+    
+    /// <summary>
+    /// Resets the released state, allowing the object to stick again.
+    /// </summary>
+    public void ResetCanStick()
+    {
+        _wasReleased = false;
     }
     
     private void OnDestroy()
     {
         if (_isStuck && _stuckTo != null)
             _stuckTo.NotifyObjectDestroyed(this);
+    }
+    
+    private struct RigidbodyData
+    {
+        public float Mass;
+        public float Drag;
+        public float AngularDrag;
+        public float GravityScale;
+        public RigidbodyType2D BodyType;
+        public RigidbodyConstraints2D Constraints;
+        public CollisionDetectionMode2D CollisionDetection;
+        public RigidbodySleepMode2D SleepMode;
+        public RigidbodyInterpolation2D Interpolation;
+        public bool FreezeRotation;
+        public PhysicsMaterial2D Material;
         
-        if (_joint != null)
-            Destroy(_joint);
+        public RigidbodyData(Rigidbody2D rb)
+        {
+            Mass = rb.mass;
+            Drag = rb.drag;
+            AngularDrag = rb.angularDrag;
+            GravityScale = rb.gravityScale;
+            BodyType = rb.bodyType;
+            Constraints = rb.constraints;
+            CollisionDetection = rb.collisionDetectionMode;
+            SleepMode = rb.sleepMode;
+            Interpolation = rb.interpolation;
+            FreezeRotation = rb.freezeRotation;
+            Material = rb.sharedMaterial;
+        }
+        
+        public void ApplyTo(Rigidbody2D rb)
+        {
+            rb.mass = Mass;
+            rb.drag = Drag;
+            rb.angularDrag = AngularDrag;
+            rb.gravityScale = GravityScale;
+            rb.bodyType = BodyType;
+            rb.constraints = Constraints;
+            rb.collisionDetectionMode = CollisionDetection;
+            rb.sleepMode = SleepMode;
+            rb.interpolation = Interpolation;
+            rb.freezeRotation = FreezeRotation;
+            rb.sharedMaterial = Material;
+        }
     }
 }

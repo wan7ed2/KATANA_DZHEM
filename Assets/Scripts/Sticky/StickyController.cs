@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class StickyController : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D _targetRigidbody;
+    [SerializeField] private Transform _stickParent;
     
     private readonly List<IStickable> _stuckObjects = new List<IStickable>();
     
@@ -17,6 +17,12 @@ public class StickyController : MonoBehaviour
     
     public int StuckCount => _stuckObjects.Count;
     public IReadOnlyList<IStickable> StuckObjects => _stuckObjects;
+
+    private void Awake()
+    {
+        if (_stickParent == null)
+            _stickParent = transform;
+    }
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -52,25 +58,31 @@ public class StickyController : MonoBehaviour
     
     public void Stick(IStickable stickable, Vector2 stickPoint)
     {
-        if (stickable.IsStuck || _stuckObjects.Contains(stickable))
+        if (!stickable.CanStick || _stuckObjects.Contains(stickable))
             return;
-        
-        if (_targetRigidbody == null)
-        {
-            Debug.LogWarning($"[{nameof(StickyController)}] Target Rigidbody is not assigned on {gameObject.name}", this);
-            return;
-        }
             
         _stuckObjects.Add(stickable);
-        stickable.OnStick(_targetRigidbody, stickPoint);
+        stickable.OnStick(_stickParent, stickPoint);
         OnObjectStuck?.Invoke(stickable);
     }
     
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        if (_targetRigidbody == null)
-            Debug.LogWarning($"[{nameof(StickyController)}] Target Rigidbody is not assigned on {gameObject.name}", this);
+        if (_stickParent == null)
+            _stickParent = transform;
+    }
+    
+    [ContextMenu("Release All Stuck Objects")]
+    private void EditorReleaseAll()
+    {
+        if (!Application.isPlaying)
+        {
+            Debug.LogWarning("Can only release objects in Play mode");
+            return;
+        }
+        Reset();
+        Debug.Log($"[StickyController] Released all stuck objects");
     }
 #endif
     
@@ -106,4 +118,3 @@ public class StickyController : MonoBehaviour
             OnObjectReleased?.Invoke(stickable);
     }
 }
-
