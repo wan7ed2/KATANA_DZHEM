@@ -217,7 +217,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: -0.19000006}
+  m_ConnectedAnchor: {x: 0, y: -0.18999958}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1242,6 +1242,7 @@ MonoBehaviour:
   _groundChecker: {fileID: 5861010111626730022}
   _stickRigidbody: {fileID: 6545339157135366204}
   _statusHandler: {fileID: 7746745772505608059}
+  _acceleratedJump: {fileID: 8109882691235832309}
 --- !u!114 &7746745772505608059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1283,6 +1284,7 @@ GameObject:
   - component: {fileID: 5861010111626730022}
   - component: {fileID: 3115177141245445415}
   - component: {fileID: 1632518453675892090}
+  - component: {fileID: 8109882691235832309}
   m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
@@ -1355,7 +1357,7 @@ Rigidbody2D:
   m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 42e945193fdae1e42836465a5b13770c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1411,6 +1413,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 8066570311115659520}
+--- !u!114 &8109882691235832309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8695678073761868219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e873234a72ac9ba409a00bea393e0735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRigidBody: {fileID: 8385060961309389505}
+  groundChecker: {fileID: 5861010111626730022}
+  jumpCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.99775773
+      outSlope: -0.99775773
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9833374
+      value: 0.018867493
+      inSlope: -0.99775773
+      outSlope: -0.99775773
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  jumpTime: 0.3
+  jumpForce: 1
+  fallCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  radius: 0.16
+  offset: {x: 0, y: 0.51}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1001 &6447961925257261985
 PrefabInstance:
   m_ObjectHideFlags: 0

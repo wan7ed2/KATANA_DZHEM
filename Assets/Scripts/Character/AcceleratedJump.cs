@@ -8,6 +8,7 @@ public class AcceleratedJump : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private AnimationCurve jumpCurve;
     [SerializeField] private float jumpTime;
+    [SerializeField] private float jumpForce;
     [SerializeField] private AnimationCurve fallCurve;
     [Header("ObstacleFinder")]
     [SerializeField] private float radius;
@@ -44,7 +45,7 @@ public class AcceleratedJump : MonoBehaviour
             if (HasObstacleAbove())
                 break;
 
-            playerRigidBody.velocity += Vector2.up * jumpCurve.Evaluate(t) * modifier;
+            playerRigidBody.velocity += Vector2.up * (jumpCurve.Evaluate(t) * modifier * jumpForce);
             yield return _waitForFixedUpdate;
         }
 
