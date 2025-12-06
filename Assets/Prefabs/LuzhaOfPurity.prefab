@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8336568081412893560}
   - component: {fileID: 8318643234687534727}
   - component: {fileID: 5768150629992224125}
+  - component: {fileID: 668052645473702038}
   m_Layer: 0
   m_Name: LuzhaOfPurity
   m_TagString: Untagged
@@ -133,3 +134,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d47dfb9ea8b834a97d15777edefcb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &668052645473702038
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922152722010750114}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
