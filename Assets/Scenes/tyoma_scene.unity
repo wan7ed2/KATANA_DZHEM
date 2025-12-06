@@ -2524,12 +2524,12 @@ MonoBehaviour:
   target: {fileID: 1943141661}
   offset: {x: 0, y: 0, z: 0}
   boundaries:
-  - <Height>k__BackingField: 16
-    <LeftBound>k__BackingField: -11
-    <RightBound>k__BackingField: 18
+  - <Height>k__BackingField: 15
+    <LeftBound>k__BackingField: -13.96
+    <RightBound>k__BackingField: 19.7
   - <Height>k__BackingField: 0
-    <LeftBound>k__BackingField: -11
-    <RightBound>k__BackingField: 4.5
+    <LeftBound>k__BackingField: -13.96
+    <RightBound>k__BackingField: 5.35
 --- !u!1001 &3362553212155325328
 PrefabInstance:
   m_ObjectHideFlags: 0

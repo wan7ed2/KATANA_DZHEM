@@ -35,7 +35,7 @@ public class MovementController : IPushableByObstacle
         _resetAction.performed -= Reset;
     }
 
-    public void Update()
+    public void Tick()
     {
         if (_walkRightAction.IsPressed()) Move(RIGHT_DIRECTION);
         else if (_walkLeftAction.IsPressed()) Move(LEFT_DIRECTION);

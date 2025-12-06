@@ -42,9 +42,10 @@ public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
 
     private void FixedUpdate()
     {
-        _groundChecker.Update();
-        _movementController.Update();
-        _stickController.Update();
+        _groundChecker.Tick();
+        _movementController.Tick();
+        _stickController.Tick();
+        _acceleratedJump.Tick();
     }
 
     private void OnDestroy()
