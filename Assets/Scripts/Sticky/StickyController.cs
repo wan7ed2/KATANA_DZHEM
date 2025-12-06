@@ -3,36 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Controller for objects that can have other IStickable objects attached to them.
-/// Only handles sticking logic. Weight is managed separately by WeightAccumulator.
+/// Controller for objects that can have IStickable objects attached to them.
 /// </summary>
 public class StickyController : MonoBehaviour
 {
+    [SerializeField] private Rigidbody2D _targetRigidbody;
+    
     private readonly List<IStickable> _stuckObjects = new List<IStickable>();
     
-    /// <summary>
-    /// Event fired when an object sticks.
-    /// </summary>
     public event Action<IStickable> OnObjectStuck;
-    
-    /// <summary>
-    /// Event fired when an object is released.
-    /// </summary>
     public event Action<IStickable> OnObjectReleased;
-    
-    /// <summary>
-    /// Event fired when all objects are reset.
-    /// </summary>
     public event Action OnAllReleased;
     
-    /// <summary>
-    /// Number of currently stuck objects.
-    /// </summary>
     public int StuckCount => _stuckObjects.Count;
-    
-    /// <summary>
-    /// Read-only access to stuck objects.
-    /// </summary>
     public IReadOnlyList<IStickable> StuckObjects => _stuckObjects;
     
     private void OnCollisionEnter2D(Collision2D collision)
@@ -42,43 +25,55 @@ public class StickyController : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent<IStickable>(out var stickable))
-        {
-            // For triggers, use the object's position as the stick point
+        if (TryFindStickable(other.gameObject, out var stickable))
             Stick(stickable, other.transform.position);
-        }
     }
     
-    /// <summary>
-    /// Try to stick an object from a collision.
-    /// </summary>
     private void TryStick(Collision2D collision)
     {
-        if (!collision.gameObject.TryGetComponent<IStickable>(out var stickable))
+        if (!TryFindStickable(collision.gameObject, out var stickable))
             return;
             
-        // Use the first contact point as the stick position
         Vector2 stickPoint = collision.GetContact(0).point;
         Stick(stickable, stickPoint);
     }
     
-    /// <summary>
-    /// Stick an object at the specified point.
-    /// </summary>
+    private bool TryFindStickable(GameObject obj, out IStickable stickable)
+    {
+        if (obj.TryGetComponent(out stickable))
+            return true;
+            
+        if (obj.TryGetComponent<ComponentLink>(out var link))
+            return link.TryGetLinked(out stickable);
+            
+        stickable = null;
+        return false;
+    }
+    
     public void Stick(IStickable stickable, Vector2 stickPoint)
     {
         if (stickable.IsStuck || _stuckObjects.Contains(stickable))
             return;
+        
+        if (_targetRigidbody == null)
+        {
+            Debug.LogWarning($"[{nameof(StickyController)}] Target Rigidbody is not assigned on {gameObject.name}", this);
+            return;
+        }
             
         _stuckObjects.Add(stickable);
-        stickable.OnStick(transform, stickPoint);
-        
+        stickable.OnStick(_targetRigidbody, stickPoint);
         OnObjectStuck?.Invoke(stickable);
     }
     
-    /// <summary>
-    /// Release a specific stuck object.
-    /// </summary>
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (_targetRigidbody == null)
+            Debug.LogWarning($"[{nameof(StickyController)}] Target Rigidbody is not assigned on {gameObject.name}", this);
+    }
+#endif
+    
     public void Release(IStickable stickable)
     {
         if (!_stuckObjects.Contains(stickable))
@@ -86,26 +81,29 @@ public class StickyController : MonoBehaviour
             
         _stuckObjects.Remove(stickable);
         stickable.OnRelease();
-        
         OnObjectReleased?.Invoke(stickable);
     }
     
-    /// <summary>
-    /// Release all stuck objects and reset the controller.
-    /// </summary>
     public void Reset()
     {
         if (_stuckObjects.Count == 0)
             return;
-            
-        // Release in reverse order to handle any dependencies
+        
         for (int i = _stuckObjects.Count - 1; i >= 0; i--)
         {
-            _stuckObjects[i].OnRelease();
+            var stickable = _stuckObjects[i];
+            stickable.OnRelease();
+            OnObjectReleased?.Invoke(stickable);
         }
         
         _stuckObjects.Clear();
         OnAllReleased?.Invoke();
+    }
+    
+    public void NotifyObjectDestroyed(IStickable stickable)
+    {
+        if (_stuckObjects.Remove(stickable))
+            OnObjectReleased?.Invoke(stickable);
     }
 }
 

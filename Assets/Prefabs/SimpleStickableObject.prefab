@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1904912982066620715}
   - component: {fileID: 6241103436377461645}
   - component: {fileID: 6148711177315349133}
+  - component: {fileID: 7309114608111212969}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -30,7 +31,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2939872249460186}
   m_Father: {fileID: 8162697626060166230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &6241103436377461645
@@ -105,6 +107,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7309114608111212969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17392487834897881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b890123456789abcdef0123456789abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 2547801031562237426}
 --- !u!1 &2547801031562237426
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +152,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1904912982066620715}
-  - {fileID: 2939872249460186}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4991641300751763855
@@ -153,8 +167,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 6148711177315349133}
-  _moveToStickPoint: 1
-  _preserveRotation: 0
 --- !u!114 &4404674182167213826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,12 +205,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4513294083423125164}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8162697626060166230}
+  m_Father: {fileID: 1904912982066620715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8402052205148204567
 SpriteRenderer:

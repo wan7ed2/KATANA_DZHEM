@@ -24,9 +24,9 @@ public interface IStickable
     /// <summary>
     /// Called when the object sticks to a target.
     /// </summary>
-    /// <param name="parent">The transform to parent to</param>
+    /// <param name="targetRigidbody">The Rigidbody2D to attach to</param>
     /// <param name="stickPoint">The world position where the object should stick</param>
-    void OnStick(Transform parent, Vector2 stickPoint);
+    void OnStick(Rigidbody2D targetRigidbody, Vector2 stickPoint);
     
     /// <summary>
     /// Called when the object is released from the target.

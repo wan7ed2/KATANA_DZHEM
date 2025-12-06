@@ -1,76 +1,47 @@
 using UnityEngine;
 
 /// <summary>
-/// Base implementation of IStickable for objects that can stick to StickyController.
-/// Add WeightProvider component separately if weight is needed.
+/// Base implementation of IStickable. Uses FixedJoint2D to attach while keeping physics active.
 /// </summary>
 public class StickableObject : MonoBehaviour, IStickable
 {
     [SerializeField] private Rigidbody2D _rigidbody;
     
-    [Tooltip("If true, the object will be positioned at the exact collision point. If false, maintains its current position relative to the parent.")]
-    [SerializeField] private bool _moveToStickPoint = true;
-    
-    [Tooltip("If true, the object will maintain its world rotation when stuck.")]
-    [SerializeField] private bool _preserveRotation = false;
-    
-    private Transform _originalParent;
-    private Vector3 _originalLocalPosition;
-    private Quaternion _originalLocalRotation;
+    private FixedJoint2D _joint;
     private bool _isStuck;
-    private bool _wasSimulated;
+    private StickyController _stuckTo;
     
     public Rigidbody2D Rigidbody => _rigidbody;
     public GameObject GameObject => gameObject;
     public bool IsStuck => _isStuck;
     
-    private void Awake()
-    {
-        _originalParent = transform.parent;
-        _originalLocalPosition = transform.localPosition;
-        _originalLocalRotation = transform.localRotation;
-    }
-    
 #if UNITY_EDITOR
     private void OnValidate()
     {
         if (_rigidbody == null)
-        {
             Debug.LogWarning($"[{nameof(StickableObject)}] Rigidbody is not assigned on {gameObject.name}", this);
-        }
     }
 #endif
     
-    public void OnStick(Transform parent, Vector2 stickPoint)
+    public void OnStick(Rigidbody2D targetRigidbody, Vector2 stickPoint)
     {
         if (_isStuck)
             return;
-            
+        
+        if (targetRigidbody == null)
+        {
+            Debug.LogWarning($"[{nameof(StickableObject)}] Cannot stick - target Rigidbody2D is null", this);
+            return;
+        }
+        
+        _stuckTo = targetRigidbody.GetComponentInChildren<StickyController>();
         _isStuck = true;
         
-        // Store physics state and disable simulation
-        _wasSimulated = _rigidbody.simulated;
-        _rigidbody.simulated = false;
-        _rigidbody.velocity = Vector2.zero;
-        _rigidbody.angularVelocity = 0f;
-        
-        // Store world rotation if we need to preserve it
-        Quaternion worldRotation = transform.rotation;
-        
-        // Parent to the target
-        transform.SetParent(parent);
-        
-        // Position at stick point or maintain offset
-        if (_moveToStickPoint)
-        {
-            transform.position = stickPoint;
-        }
-        
-        // Restore world rotation if needed
-        if (_preserveRotation)
-        {
-            transform.rotation = worldRotation;
-        }
+        _joint = _rigidbody.gameObject.AddComponent<FixedJoint2D>();
+        _joint.connectedBody = targetRigidbody;
+        _joint.breakForce = Mathf.Infinity;
+        _joint.breakTorque = Mathf.Infinity;
+        _joint.autoConfigureConnectedAnchor = true;
     }
     
     public void OnRelease()
@@ -79,24 +50,21 @@ public class StickableObject : MonoBehaviour, IStickable
             return;
             
         _isStuck = false;
+        _stuckTo = null;
         
-        // Restore parent
-        transform.SetParent(_originalParent);
-        
-        // Restore physics simulation
-        _rigidbody.simulated = _wasSimulated;
-        _rigidbody.velocity = Vector2.zero;
-        _rigidbody.angularVelocity = 0f;
+        if (_joint != null)
+        {
+            Destroy(_joint);
+            _joint = null;
+        }
     }
     
-    /// <summary>
-    /// Resets the object to its original local position and rotation (relative to original parent).
-    /// </summary>
-    public void ResetToOriginal()
+    private void OnDestroy()
     {
-        OnRelease();
-        transform.localPosition = _originalLocalPosition;
-        transform.localRotation = _originalLocalRotation;
+        if (_isStuck && _stuckTo != null)
+            _stuckTo.NotifyObjectDestroyed(this);
+        
+        if (_joint != null)
+            Destroy(_joint);
     }
 }
-
