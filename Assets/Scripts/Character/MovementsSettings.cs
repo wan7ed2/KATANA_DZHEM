@@ -14,4 +14,5 @@ public class MovementsSettings
 public class StickSettings
 {
     public float ROTATE_SPEED;
+    public float DAMPING;
 }

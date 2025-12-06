@@ -18,7 +18,7 @@ public class GroundChecker : MonoBehaviour
         _rigidbody = rigidbody;
     }
 
-    public void Update()
+    public void Tick()
     {
         if (_rigidbody == null)
             return;

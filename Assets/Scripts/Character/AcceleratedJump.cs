@@ -23,14 +23,13 @@ public class AcceleratedJump : MonoBehaviour
 
     public void Jump(float modifier)
     {
-        Debug.Log($"Jumping: {_isJumping}, Grounded: {groundChecker.IsGrounded}");
         if (_isJumping || !groundChecker.IsGrounded)
             return;
 
         StartCoroutine(JumpCoroutine(modifier));
     }
 
-    private void FixedUpdate()
+    public void Tick()
     {
         if (!_isJumping && !groundChecker.IsGrounded)
             ApplyGravity();
