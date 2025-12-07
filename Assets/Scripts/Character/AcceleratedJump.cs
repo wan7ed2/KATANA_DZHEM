@@ -32,7 +32,7 @@ public class AcceleratedJump : MonoBehaviour
         var isJumped = JumpInternal(1, zone.jumpForce, zone.jumpTime);
 
         if (isJumped)
-            dzone.particleEffects.Play();
+            zone.particleEffects.Play();
     }
 
     public void Tick()
