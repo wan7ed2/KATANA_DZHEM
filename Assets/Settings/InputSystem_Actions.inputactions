@@ -110,6 +110,17 @@
                 },
                 {
                     "name": "",
+                    "id": "a2083aff-ddc5-43d1-85e8-9de9bb4e3f40",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "8ff0b740-996f-450e-98ee-f8b5762b8b62",
                     "path": "<Mouse>/delta",
                     "interactions": "",
