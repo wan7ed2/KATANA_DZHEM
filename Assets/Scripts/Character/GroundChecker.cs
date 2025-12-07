@@ -3,12 +3,15 @@ using UnityEngine;
 
 public class GroundChecker : MonoBehaviour
 {
+    public event Action OnGrounded;
+    public event Action OnFly;
+    
     [SerializeField] private float _checkDistance;
     [SerializeField] private float _radiusCheck;
     [SerializeField] private float _circleCheckOffset;
     [SerializeField] private LayerMask _layerMask;
 
-    public bool IsGrounded => _hit.collider != null || _circleHit != null;
+    public bool IsGrounded => _isGrounded;
     
     public bool RayHit => _hit;
     public bool CircleHit => _circleHit;
@@ -27,11 +30,19 @@ public class GroundChecker : MonoBehaviour
 
         var circlePos = _rigidbody.position + Vector2.down * _circleCheckOffset;
         _circleHit = Physics2D.OverlapCircle(circlePos, _radiusCheck, _layerMask);
+
+        var wasGrounded = _isGrounded;
+        _isGrounded = _hit.collider != null || _circleHit != null;
+
+        if (wasGrounded && !_isGrounded) OnFly?.Invoke();
+        else if (!wasGrounded && _isGrounded) OnGrounded?.Invoke();
     }
 
     private Rigidbody2D _rigidbody;
     private RaycastHit2D _hit;
     private Collider2D _circleHit;
+
+    private bool _isGrounded;
 
     private void OnDrawGizmos()
     {

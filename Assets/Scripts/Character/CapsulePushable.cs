@@ -8,7 +8,7 @@ namespace Character
 
         public void Push(Vector2 direction, float force)
         {
-            _player.MovementController.Push(direction, force);
+            _player.Push(direction, force);
         }
     }
 }

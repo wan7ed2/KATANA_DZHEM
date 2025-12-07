@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class MovementController : IPushableByObstacle
 {
+    public event Action OnJump;
+    
     public MovementController(
         Rigidbody2D rigidbody,
         MovementsSettings settings,
@@ -126,6 +129,7 @@ public class MovementController : IPushableByObstacle
     private void Jump(InputAction.CallbackContext ctx)
     {
         _acceleratedJump.Jump(GetModifiers().JumpMultiplier);
+        OnJump?.Invoke();
     }
 
     private void Reset(InputAction.CallbackContext ctx)

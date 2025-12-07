@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onlyHorizontalPush: 1
-  pushForce: 10
+  pushForce: 20
   shouldDestroyAfterCollision: 0
 --- !u!1 &4480598257437226925
 GameObject:

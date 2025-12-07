@@ -22,4 +22,16 @@ public class Systems
 
         throw new KeyNotFoundException($"System of type {type} is not registered.");
     }
+
+    public static bool TryGet<T>(out T outSystem) where T : ISystem
+    {
+        var type = typeof(T);
+        outSystem = default;
+
+        if (!_systems.ContainsKey(type))
+            return false;
+
+        outSystem = (T)_systems[type];
+        return true;
+    }
 }
