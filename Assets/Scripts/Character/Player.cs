@@ -15,12 +15,13 @@ public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
     [SerializeField] private AcceleratedJump _acceleratedJump;
     [SerializeField] private MovementAnimator _movementAnimator;
     
+    [SerializeField] private MovementController _movementController;
     [SerializeField] private CharacterSoundView _soundView;
 
     public Rigidbody2D Rigidbody => _rigidbody;
     public MovementController MovementController => _movementController;
+    public GroundChecker GroundChecker => _groundChecker;
     
-    private MovementController _movementController;
     private StickController _stickController;
     private InputSystem_Actions _input;
     
@@ -31,7 +32,7 @@ public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
         _input = new InputSystem_Actions();
         _groundChecker.Init(_rigidbody);
         _stickController = new StickController(_input.Player, _stickRigidbody, _stickSettings);
-        _movementController = new MovementController(
+        _movementController.Init(
             _rigidbody, 
             _movementsSettings, 
             _groundChecker, 

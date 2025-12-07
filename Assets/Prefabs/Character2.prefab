@@ -1404,7 +1404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2902a140f97d4b18b674a0524edcbff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lerpV: 0.1
+  _lerpV: 0.2
   _target: {fileID: 1327118840885029535}
   _source: {fileID: 7896785005929326871}
 --- !u!114 &3600217914289758483
@@ -1884,6 +1884,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 1445386422325048027}
+--- !u!1 &6448941162793204359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7967449028515172788}
+  m_Layer: 7
+  m_Name: CutoffPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7967449028515172788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6448941162793204359}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.07, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3452174001186453574}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7259787434626935446
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,6 +2204,7 @@ GameObject:
   - component: {fileID: 1863484828555259254}
   - component: {fileID: 7746745772505608059}
   - component: {fileID: 7663394652499886544}
+  - component: {fileID: 6601313797831351056}
   m_Layer: 7
   m_Name: Character2
   m_TagString: Untagged
@@ -2266,6 +2298,32 @@ MonoBehaviour:
   _handler: {fileID: 7746745772505608059}
   _position: {x: 0, y: 5}
   _showModifiers: 1
+--- !u!114 &6601313797831351056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066570311115659520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24821d636c0044c39f1c9823ada5faaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chains:
+  - {fileID: 2818339681970262873}
+  - {fileID: 2437388088700331009}
+  - {fileID: 8234639456765149081}
+  - {fileID: 8062785402517560279}
+  - {fileID: 6446641935507699218}
+  - {fileID: 331969628536239008}
+  - {fileID: 3090645691637009041}
+  - {fileID: 4701614332127050956}
+  _player: {fileID: 1863484828555259254}
+  _timeDisable: 0.25
+  _massDisable: 0.1
+  _cutoffPoint: {fileID: 7967449028515172788}
+  _chainPoint: {fileID: 6025056568735831888}
 --- !u!1 &8581925502296482754
 GameObject:
   m_ObjectHideFlags: 0
@@ -2381,7 +2439,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7967449028515172788}
   m_Father: {fileID: 5205631491994266115}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &2429792347109841337

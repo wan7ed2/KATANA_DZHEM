@@ -6,13 +6,14 @@ public class DartTrap : MonoBehaviour
 {
     [SerializeField] GameObject dartPrefab;
     [SerializeField] Transform shootPoint;
-    [SerializeField] bool shouldTriggerOnlyOnce = false;
+    [SerializeField] private int count;
 
     private bool triggered = false;
+    private int _firedCount;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (triggered)
+        if (_firedCount >= count)
             return;
 
         var pushable = collision.gameObject.GetComponent<IPushableByObstacle>();
@@ -20,12 +21,11 @@ public class DartTrap : MonoBehaviour
             return;
 
         FireDart();
-
-        triggered = shouldTriggerOnlyOnce;
     }
 
     void FireDart()
     {
         GameObject dart = Instantiate(dartPrefab, shootPoint.position, shootPoint.rotation);
+        _firedCount++;
     }
 }
