@@ -4932,6 +4932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d47dfb9ea8b834a97d15777edefcb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sound: {fileID: 11400000, guid: 1bb24f805d91e2449a6da4fc7d0b7af3, type: 2}
   _particles: {fileID: 4862269963307682580}
 --- !u!95 &668052645473702038
 Animator:

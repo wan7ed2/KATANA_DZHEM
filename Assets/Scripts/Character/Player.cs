@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using Character;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -6,9 +7,9 @@ using UnityEngine;
 public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
 {
     public event Action OnHit;
-    
+
     [SerializeField] private bool _isEvil;
-    
+
     [SerializeField] private MovementsSettings _movementsSettings;
     [SerializeField] private StickSettings _stickSettings;
     [SerializeField] private Rigidbody2D _rigidbody;
@@ -17,21 +18,19 @@ public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
     [SerializeField] private CharacterStatusEffectHandler _statusHandler;
     [SerializeField] private AcceleratedJump _acceleratedJump;
     [SerializeField] private MovementAnimator _movementAnimator;
-    
+
     [SerializeField] private MovementController _movementController;
     [SerializeField] private CharacterSoundView _soundView;
     [SerializeField] private ParticleSystem _jumpParticles;
 
-    [SerializeField] private Animator _animator;
-    [SerializeField] private AnimatorController _goodAnim;
-    [SerializeField] private AnimatorController _evilAnim;
+    [SerializeField] private AnimatorComponentsProvider animatorProvider;
 
     public const string IS_EVIL_KEY = "IsEvil";
-    
+
     public Rigidbody2D Rigidbody => _rigidbody;
     public MovementController MovementController => _movementController;
     public GroundChecker GroundChecker => _groundChecker;
-    
+
     private StickController _stickController;
     private InputSystem_Actions _input;
 
@@ -39,12 +38,11 @@ public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
     {
         _isEvil = isEvil;
     }
-    
+
     private void Awake()
     {
-        _animator.runtimeAnimatorController = _isEvil ? _evilAnim : _goodAnim;
         _soundView.Init(this, _groundChecker);
-        
+
         _input = new InputSystem_Actions();
         _groundChecker.Init(_rigidbody);
         _stickController = new StickController(_input.Player, _stickRigidbody, _stickSettings);
@@ -62,6 +60,7 @@ public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
 
     private void Start()
     {
+        animatorProvider.ChangeAnimator(_isEvil);
         _soundView.Start();
         _movementController.Start();
         _stickController.Start();
@@ -89,7 +88,7 @@ public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
         _movementController.Push(direction, force);
         OnHit?.Invoke();
     }
-    
+
     public void ApplyWind(Vector2 force)
     {
         _rigidbody.AddForce(force);

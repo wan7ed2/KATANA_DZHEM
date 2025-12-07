@@ -5,6 +5,7 @@ using UnityEngine;
 public class LuzhaOfPurityController : MonoBehaviour
 {
 
+    [SerializeField] private SoundClip _sound;
     [SerializeField] private ParticleSystem _particles;
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -18,6 +19,8 @@ public class LuzhaOfPurityController : MonoBehaviour
 
         purifiable.Purify();
         _particles.Play();
+        Systems.TryGet<SoundSystem>(out var soundSystem);
+        soundSystem?.PlayOneShot(_sound);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,5 +33,7 @@ public class LuzhaOfPurityController : MonoBehaviour
         
         purifiable.Purify();
         _particles.Play();
+        Systems.TryGet<SoundSystem>(out var soundSystem);
+        soundSystem?.PlayOneShot(_sound);
     }
 }

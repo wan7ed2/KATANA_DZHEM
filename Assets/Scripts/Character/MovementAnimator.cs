@@ -2,8 +2,7 @@
 
 public class MovementAnimator : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private AnimatorComponentsProvider components;
 
     private const float RightDirection = 1;
 
@@ -12,23 +11,23 @@ public class MovementAnimator : MonoBehaviour
 
     public void StartMovement(float direction)
     {
-        spriteRenderer.flipX = direction == RightDirection;
-        animator.SetBool(MovementAnimationParameter, true);
+        components.SpriteRenderer.flipX = direction == RightDirection;
+        components.Animator.SetBool(MovementAnimationParameter, true);
     }
 
     public void StopMovement()
     {
-        animator.SetBool(MovementAnimationParameter, false);
+        components.Animator.SetBool(MovementAnimationParameter, false);
     }
 
     public void StartJump()
     {
-        animator.SetBool(JumpAnimationParameter, true);
+        components.Animator.SetBool(JumpAnimationParameter, true);
     }
 
     public void StopJump()
     {
-        animator.SetBool(JumpAnimationParameter, false);
+        components.Animator.SetBool(JumpAnimationParameter, false);
     }
 
 }
