@@ -436,7 +436,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 460547912146291878, guid: cca99d7e51e16b1409c78210b21da651, type: 3}
       propertyPath: m_Size.x
-      value: -2
+      value: -1.3124523
       objectReference: {fileID: 0}
     - target: {fileID: 460547912146291878, guid: cca99d7e51e16b1409c78210b21da651, type: 3}
       propertyPath: m_Size.y
@@ -476,7 +476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7561468606844062788, guid: cca99d7e51e16b1409c78210b21da651, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16
+      value: -16.6875
       objectReference: {fileID: 0}
     - target: {fileID: 7561468606844062788, guid: cca99d7e51e16b1409c78210b21da651, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2854,7 +2854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1384274276814650962, guid: eb0d20b7b5d68d04d8fc43349cf2d5ca, type: 3}
       propertyPath: <jumpTime>k__BackingField
-      value: 0.5
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 1384274276814650962, guid: eb0d20b7b5d68d04d8fc43349cf2d5ca, type: 3}
       propertyPath: <jumpForce>k__BackingField
@@ -6019,11 +6019,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5205631491994266115, guid: 0df559b9e6b6b71419be6ff5d4bbe4a6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: 5.89
       objectReference: {fileID: 0}
     - target: {fileID: 5205631491994266115, guid: 0df559b9e6b6b71419be6ff5d4bbe4a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8
+      value: 16.66
       objectReference: {fileID: 0}
     - target: {fileID: 5205631491994266115, guid: 0df559b9e6b6b71419be6ff5d4bbe4a6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6059,11 +6059,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6948008053777076307, guid: 0df559b9e6b6b71419be6ff5d4bbe4a6, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.14999962
+      value: 0.1500001
       objectReference: {fileID: 0}
     - target: {fileID: 6948008053777076307, guid: 0df559b9e6b6b71419be6ff5d4bbe4a6, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.25999832
+      value: -0.2600001
       objectReference: {fileID: 0}
     - target: {fileID: 8066570311115659520, guid: 0df559b9e6b6b71419be6ff5d4bbe4a6, type: 3}
       propertyPath: m_Name
@@ -7333,7 +7333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1384274276814650962, guid: eb0d20b7b5d68d04d8fc43349cf2d5ca, type: 3}
       propertyPath: <jumpTime>k__BackingField
-      value: 0.3
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 1384274276814650962, guid: eb0d20b7b5d68d04d8fc43349cf2d5ca, type: 3}
       propertyPath: <jumpForce>k__BackingField
