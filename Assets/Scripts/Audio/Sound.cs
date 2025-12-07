@@ -64,11 +64,6 @@ public static class Sound
     public static void StopAll(VolumeType volumeType) => SoundSystem.StopAll(volumeType);
 
     /// <summary>
-    /// Sets the master volume for all sound types.
-    /// </summary>
-    public static void SetMasterVolume(float value) => SoundSystem.SetMasterVolume(value);
-
-    /// <summary>
     /// Sets the volume for a specific sound type (Music, SFX).
     /// </summary>
     public static void SetVolume(VolumeType type, float value) => SoundSystem.SetVolume(type, value);

@@ -38,12 +38,6 @@ public class SoundSystem : ISystem
 
     #region Volume Control
 
-    public void SetMasterVolume(float value)
-    {
-        foreach (var volumeSetting in _volumeSettings)
-            volumeSetting.Value = value;
-    }
-
     public void SetVolume(VolumeType type, float value)
     {
         foreach (var volumeSetting in _volumeSettings)

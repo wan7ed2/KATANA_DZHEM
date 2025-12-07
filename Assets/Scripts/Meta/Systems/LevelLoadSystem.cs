@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,12 +10,12 @@ public class LevelLoadSystem : ISystem
 
     public LevelLoadSystem(Curtain curtainPrefab, string mainLevelName, ICoroutineRunner coroutineRunner)
     {
-        _curtain = GameObject.Instantiate(curtainPrefab);
+        _curtain = Object.Instantiate(curtainPrefab);
         _coroutineRunner = coroutineRunner;
         _mainLevelName = mainLevelName;
 
         _curtain.Hide();
-        GameObject.DontDestroyOnLoad(_curtain.gameObject);
+        Object.DontDestroyOnLoad(_curtain.gameObject);
     }
 
     public Coroutine LoadMainLevel() =>
@@ -32,5 +31,8 @@ public class LevelLoadSystem : ISystem
             yield return null;
 
         _curtain.Hide();
+        var pauseSystem = Systems.Get<PauseSystem>();
+        if (pauseSystem != null && pauseSystem.Paused)
+            pauseSystem.Resume();
     }
 }
