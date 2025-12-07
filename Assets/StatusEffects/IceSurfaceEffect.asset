@@ -16,7 +16,7 @@ MonoBehaviour:
   GizmoColor: {r: 0.08699717, g: 0.7274632, b: 0.8018868, a: 1}
   Modifiers:
     SpeedMultiplier: 1.2
-    JumpMultiplier: 0.9
+    JumpMultiplier: 1
     Friction: 0.1
     AccelerationMultiplier: 1.5
   Duration: 0.5
