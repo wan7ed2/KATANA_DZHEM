@@ -1,17 +1,19 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Systems
 {
-    private static readonly Dictionary<Type, ISystem> _systems = new Dictionary<Type, ISystem>();
+    private static readonly Dictionary<Type, ISystem> _systems = new();
 
-    public static void Add(ISystem system)
+    public static void Add<T>(T system) where T : ISystem
     {
-        var type = system.GetType();
+        var type = typeof(T);
         if (_systems.ContainsKey(type))
             throw new InvalidOperationException($"System of type {type} is already registered.");
 
         _systems[type] = system;
+        Debug.Log($"Added system: {type}");
     }
 
     public static T Get<T>() where T : ISystem

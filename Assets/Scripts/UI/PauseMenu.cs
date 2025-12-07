@@ -3,33 +3,48 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private Slider volumeSlider;
+    [SerializeField] private Slider musicSlider;
+    [SerializeField] private Slider sfxSlider;
     [SerializeField] private Button restartButton;
 
-    private void Awake() => 
-        Systems.Get<PauseSystem>().Resume();
+    private void Start()
+    {
+        UpdateSliders();
+    }
 
     private void OnEnable()
     {
-        Systems.Get<PauseSystem>().Pause();
-        volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
+        musicSlider.onValueChanged.AddListener(OnMusicChanged);
+        sfxSlider.onValueChanged.AddListener(OnSfxChanged);
         restartButton.onClick.AddListener(OnRestartClicked);
     }
 
     private void OnDisable()
     {
-        volumeSlider.onValueChanged.RemoveListener(OnVolumeChanged);
+        musicSlider.onValueChanged.RemoveListener(OnMusicChanged);
+        sfxSlider.onValueChanged.RemoveListener(OnSfxChanged);
         restartButton.onClick.RemoveListener(OnRestartClicked);
-        Systems.Get<PauseSystem>().Resume();
     }
 
-    private void OnVolumeChanged(float value)
+    private void OnMusicChanged(float value)
     {
-        Systems.Get<SoundSystem>().SetMasterVolume(value);
+        Systems.Get<SoundSystem>().SetVolume(VolumeType.Music, value);
+    }
+
+    private void OnSfxChanged(float value)
+    {
+        Systems.Get<SoundSystem>().SetVolume(VolumeType.SFX, value);
     }
 
     private void OnRestartClicked()
     {
         Systems.Get<LevelLoadSystem>().LoadMainLevel();
+    }
+
+    private void UpdateSliders()
+    {
+        var soundSystem = Systems.Get<SoundSystem>();
+        musicSlider.value = soundSystem.GetVolume(VolumeType.Music);
+        sfxSlider.value = soundSystem.GetVolume(VolumeType.SFX);
     }
 }
