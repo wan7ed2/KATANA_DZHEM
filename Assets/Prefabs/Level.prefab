@@ -18020,6 +18020,10 @@ PrefabInstance:
       propertyPath: m_FlipY
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2647588150340138632, guid: f499a7d8e000ed64d963e264a3f17f2a, type: 3}
+      propertyPath: _soundClip
+      value: 
+      objectReference: {fileID: 11400000, guid: 8ceb07aff2c66a0448c1aab5c38d64ae, type: 2}
     - target: {fileID: 6217568167776619539, guid: f499a7d8e000ed64d963e264a3f17f2a, type: 3}
       propertyPath: m_FlipY
       value: 1
