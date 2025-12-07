@@ -329,7 +329,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.1500001, y: -0.26000023}
+  m_ConnectedAnchor: {x: 0.1500001, y: -0.26}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -7533,10 +7533,6 @@ PrefabInstance:
     - target: {fileID: 1761142484266607739, guid: e6e976b8240df164aa10ec722f37ddbd, type: 3}
       propertyPath: m_Name
       value: Bulava
-      objectReference: {fileID: 0}
-    - target: {fileID: 3123176063184457589, guid: e6e976b8240df164aa10ec722f37ddbd, type: 3}
-      propertyPath: pushForce
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4833997482983092170, guid: e6e976b8240df164aa10ec722f37ddbd, type: 3}
       propertyPath: m_ConnectedAnchor.x

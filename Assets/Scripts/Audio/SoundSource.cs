@@ -95,10 +95,14 @@ public class SoundSource : MonoBehaviour
         if (_volumeSetting != null)
             _volumeSetting.Changed -= UpdateVolume;
 
-        _audioSource.Stop();
-        _audioSource.clip = null;
-        _audioSource.loop = false;
-        _audioSource.pitch = 1f;
+        if (_audioSource != null)
+        {
+            _audioSource.Stop();
+            _audioSource.clip = null;
+            _audioSource.loop = false;
+            _audioSource.pitch = 1f;
+        }
+
         _baseVolume = 1f;
         _volumeSetting = null;
         enabled = false;
