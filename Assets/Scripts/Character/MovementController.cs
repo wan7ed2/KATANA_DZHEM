@@ -16,7 +16,8 @@ public class MovementController : IPushableByObstacle
         InputSystem_Actions.PlayerActions input,
         AcceleratedJump acceleratedJump,
         MovementAnimator movementAnimator,
-        CharacterStatusEffectHandler statusHandler = null)
+        CharacterStatusEffectHandler statusHandler = null,
+        ParticleSystem jumpParticles = null)
     {
         _settings = settings;
         _rigidbody = rigidbody;
@@ -29,6 +30,7 @@ public class MovementController : IPushableByObstacle
         _resetAction = input.Reset;
         _acceleratedJump = acceleratedJump;
         _movementAnimator = movementAnimator;
+        _jumpParticles = jumpParticles;
     }
 
     public void Start()
@@ -85,6 +87,7 @@ public class MovementController : IPushableByObstacle
     private AcceleratedJump _acceleratedJump;
 
     private MovementAnimator _movementAnimator;
+    private ParticleSystem _jumpParticles;
 
     private StatusEffectModifiers GetModifiers()
     {
@@ -131,7 +134,8 @@ public class MovementController : IPushableByObstacle
 
     private void Jump(InputAction.CallbackContext ctx)
     {
-        _acceleratedJump.Jump(GetModifiers().JumpMultiplier);
+        if (_acceleratedJump.Jump(GetModifiers().JumpMultiplier))
+            _jumpParticles?.Play();
         OnJump?.Invoke();
     }
 
