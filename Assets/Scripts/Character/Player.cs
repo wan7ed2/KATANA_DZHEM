@@ -1,10 +1,13 @@
 using System;
 using Character;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
 {
     public event Action OnHit;
+    
+    [SerializeField] private bool _isEvil;
     
     [SerializeField] private MovementsSettings _movementsSettings;
     [SerializeField] private StickSettings _stickSettings;
@@ -19,15 +22,25 @@ public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
     [SerializeField] private CharacterSoundView _soundView;
     [SerializeField] private ParticleSystem _jumpParticles;
 
+    [SerializeField] private Animator _animator;
+    [SerializeField] private AnimatorController _goodAnim;
+    [SerializeField] private AnimatorController _evilAnim;
+
     public Rigidbody2D Rigidbody => _rigidbody;
     public MovementController MovementController => _movementController;
     public GroundChecker GroundChecker => _groundChecker;
     
     private StickController _stickController;
     private InputSystem_Actions _input;
+
+    public void SetEvil(bool isEvil)
+    {
+        _isEvil = isEvil;
+    }
     
     private void Awake()
     {
+        _animator.runtimeAnimatorController = _isEvil ? _evilAnim : _goodAnim;
         _soundView.Init(this, _groundChecker);
         
         _input = new InputSystem_Actions();
