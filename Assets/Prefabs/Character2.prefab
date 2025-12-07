@@ -7267,3 +7267,4 @@ MonoBehaviour:
   _cd: 0.75
   _rb: {fileID: 6233847411061102582}
   _velocityMin: 1.54
+  _ledColorOverride: {r: 0.109803915, g: 0.7422547, b: 1, a: 0.6117647}
