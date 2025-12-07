@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 61814640852707132}
   - component: {fileID: 1491854901914712375}
   - component: {fileID: 6106132495308437990}
+  - component: {fileID: 1666380226794187134}
   m_Layer: 0
   m_Name: igla
   m_TagString: Untagged
@@ -55,7 +56,7 @@ MonoBehaviour:
   effectiveWayToCheckGeound:
     serializedVersion: 2
     m_Bits: 64
-  distance: 1
+  groundCheckDistance: 0.1
 --- !u!114 &1479970062003500895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,10 +137,6 @@ MonoBehaviour:
   onlyHorizontalPush: 1
   pushForce: 10
   shouldDestroyAfterCollision: 1
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  spwn: {fileID: 0}
 --- !u!61 &61814640852707132
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -230,3 +227,53 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1666380226794187134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5366666907418422769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_LightType: 1
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.676
+  m_Color: {r: 1, g: 0.10849059, b: 0.10849059, a: 0.5254902}
+  m_Intensity: 2.38
+  m_LightVolumeIntensity: 1
+  m_LightVolumeIntensityEnabled: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowIntensityEnabled: 0
+  m_ShadowIntensity: 0.75
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: -0.053200006, y: 0.41369998, z: 0}
+    m_Extent: {x: 3.3753, y: 4.0143, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 0.42
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 2.44
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.98939997, y: -1.1596221, z: 0}
+  - {x: 0.88300854, y: -0.8191703, z: 0}
+  - {x: 0.39361122, y: 1.7554079, z: 0}
+  - {x: -0.05315393, y: 1.9894681, z: 0}
