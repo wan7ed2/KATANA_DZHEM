@@ -29,7 +29,10 @@ public class AcceleratedJump : MonoBehaviour
         if (!other.gameObject.TryGetComponent<JumpZone>(out var zone))
             return;
 
-        JumpInternal(1, zone.jumpForce, zone.jumpTime);
+        var isJumped = JumpInternal(1, zone.jumpForce, zone.jumpTime);
+
+        if (isJumped)
+            dzone.particleEffects.Play();
     }
 
     public void Tick()
@@ -38,12 +41,13 @@ public class AcceleratedJump : MonoBehaviour
             ApplyGravity();
     }
 
-    private void JumpInternal(float modifier, float force, float time)
+    private bool JumpInternal(float modifier, float force, float time)
     {
         if (_isJumping || !groundChecker.IsGrounded)
-            return;
+            return false;
 
         StartCoroutine(JumpCoroutine(modifier, force, time));
+        return true;
     }
 
     private IEnumerator JumpCoroutine(float modifier, float force, float time)
