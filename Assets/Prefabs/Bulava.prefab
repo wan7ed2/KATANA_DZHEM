@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af9a15b626060747a2fadbc1f2138b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stickyController: {fileID: 0}
+  _stickyController: {fileID: 6937191577062958235}
   _targetRigidbody: {fileID: 1150898422412928087}
 --- !u!114 &6937191577062958235
 MonoBehaviour:
