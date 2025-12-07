@@ -7263,7 +7263,7 @@ MonoBehaviour:
     m_Bits: 64
   _groundCollisionParticles: {fileID: 6911116827033831413, guid: e5dc79fb4c9310a4e88b25812f75f99f, type: 3}
   _particlesXInverse: {fileID: 6911116827033831413, guid: 2b36649ca36ab1f43a5f6d5b8854bed7, type: 3}
-  _radius: 0.78
+  _radius: 0.87
   _cd: 0.75
   _rb: {fileID: 6233847411061102582}
   _velocityMin: 1.54
