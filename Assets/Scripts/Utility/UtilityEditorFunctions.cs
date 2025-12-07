@@ -22,7 +22,7 @@ public class UtilityEditorFunctions
     [MenuItem("Utilities/Randomize sprites")]
     static void RandomizeSprites()
     {
-        Sprite[] allSprites = Resources.LoadAll<Sprite>("Sprites/Props/BackProps");
+        Sprite[] allSprites = Resources.LoadAll<Sprite>("Sprites/Props/Props");
         if (allSprites.Length == 0)
         {
             Debug.LogError("Sprites was not found");
@@ -36,6 +36,7 @@ public class UtilityEditorFunctions
 
             var sprite = allSprites[Random.Range(0, allSprites.Length)];
             spriteRenderer.sprite = sprite;
+            EditorUtility.SetDirty(gameObject);
         }
     }
 }
