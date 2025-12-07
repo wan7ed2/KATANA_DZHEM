@@ -12,6 +12,8 @@ public class IntroCinmaticController : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private GameObject _game;
     [SerializeField] private Animator _introAnimator;
+
+    [SerializeField] private SoundClip _hitSound;
     
     private void Start()
     {
@@ -28,5 +30,11 @@ public class IntroCinmaticController : MonoBehaviour
     {
         gameObject.SetActive(false);
         _game.SetActive(true);
+    }
+
+    public void PlayHitSound()
+    {
+        Systems.TryGet<SoundSystem>(out var soundSystem);
+        soundSystem?.PlayOneShot(_hitSound);
     }
 }

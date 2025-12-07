@@ -1532,6 +1532,7 @@ MonoBehaviour:
   _player: {fileID: 1153520114}
   _game: {fileID: 1702256076}
   _introAnimator: {fileID: 1635159084}
+  _hitSound: {fileID: 11400000, guid: 8cfa330e227d9bd4f993da34da2c69c9, type: 2}
 --- !u!1 &1683138985
 GameObject:
   m_ObjectHideFlags: 0
