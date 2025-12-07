@@ -8,7 +8,6 @@ public class DartTrap : MonoBehaviour
     [SerializeField] Transform shootPoint;
     [SerializeField] private int count;
 
-    private bool triggered = false;
     private int _firedCount;
 
     private void OnTriggerEnter2D(Collider2D collision)
