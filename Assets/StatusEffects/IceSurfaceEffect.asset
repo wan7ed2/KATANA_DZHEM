@@ -15,9 +15,9 @@ MonoBehaviour:
   DisplayName: IceSurface_Default
   GizmoColor: {r: 0.08699717, g: 0.7274632, b: 0.8018868, a: 1}
   Modifiers:
-    SpeedMultiplier: 1.2
-    JumpMultiplier: 0.9
-    Friction: 0.1
-    AccelerationMultiplier: 1.5
+    SpeedMultiplier: 2
+    JumpMultiplier: 0.018
+    Friction: 0.005
+    AccelerationMultiplier: 2
   Duration: 0.5
   FadeOut: 0

@@ -311,7 +311,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 468469785384713050, guid: 4098214bc4e3c7e43ade29ae5bf92f0a, type: 3}
       propertyPath: _useTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1544580133966332695, guid: 4098214bc4e3c7e43ade29ae5bf92f0a, type: 3}
       propertyPath: m_Size.x

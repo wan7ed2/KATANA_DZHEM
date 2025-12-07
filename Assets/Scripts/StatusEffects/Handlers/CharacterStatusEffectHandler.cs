@@ -6,3 +6,4 @@ public class CharacterStatusEffectHandler : BaseStatusEffectHandler
     public override string LogCategory => "StatusEffect";
 }
 
+

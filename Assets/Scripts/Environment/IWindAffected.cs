@@ -13,3 +13,4 @@ public interface IWindAffected
     void ApplyWind(Vector2 force);
 }
 
+

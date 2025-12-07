@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Hit_Clip
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 84be5c27328f29c4fb1a9483b982147e, type: 3}
-  volume: 0.25
+  - {fileID: 8300000, guid: ba7dc487b28fd794dbecc050d2e52ab8, type: 3}
+  volume: 1
   pitch: 1
   pitchVariation: 0
   volumeType: 1

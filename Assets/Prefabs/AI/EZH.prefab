@@ -432,6 +432,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4678391590181788244}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3529325777241869895, guid: 4103d339af206d542890e3c32e4816c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2647588150340138632}
     - targetCorrespondingSourceObject: {fileID: 44158480160919871, guid: 4103d339af206d542890e3c32e4816c4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4639274835890867493}
@@ -457,6 +460,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7397181880028462143, guid: 4103d339af206d542890e3c32e4816c4, type: 3}
   m_PrefabInstance: {fileID: 6202255349532262042}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6200046032240218915 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6803114340216249, guid: 4103d339af206d542890e3c32e4816c4, type: 3}
+  m_PrefabInstance: {fileID: 6202255349532262042}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236983584649047973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d4e5f6789012345678abcdef123456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6236983584649047973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 44158480160919871, guid: 4103d339af206d542890e3c32e4816c4, type: 3}
@@ -476,6 +490,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _patrolEnemy: {fileID: 1615284822136585395}
   _spriteRenderer: {fileID: 6217568167776619539}
+--- !u!1 &7415310348171047133 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3529325777241869895, guid: 4103d339af206d542890e3c32e4816c4, type: 3}
+  m_PrefabInstance: {fileID: 6202255349532262042}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2647588150340138632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415310348171047133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7289d9a2fb4a80bc2c828583fc3a07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundClip: {fileID: 11400000, guid: 7e93dd132b6429d439e0988a8f5502f8, type: 2}
+  _stickable: {fileID: 6200046032240218915}
 --- !u!4 &8803649274390030579 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3188001246414263913, guid: 4103d339af206d542890e3c32e4816c4, type: 3}

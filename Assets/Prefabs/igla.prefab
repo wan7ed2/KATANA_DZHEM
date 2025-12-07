@@ -52,6 +52,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 13
   isUp: 1
+  effectiveWayToCheckGeound:
+    serializedVersion: 2
+    m_Bits: 64
+  distance: 1
 --- !u!114 &1479970062003500895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +136,10 @@ MonoBehaviour:
   onlyHorizontalPush: 1
   pushForce: 10
   shouldDestroyAfterCollision: 1
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  spwn: {fileID: 0}
 --- !u!61 &61814640852707132
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -193,6 +201,8 @@ MonoBehaviour:
   _targetTransform: {fileID: 472940859124306360}
   _collider: {fileID: 61814640852707132}
   purifyDestroyTime: 3
+  _useOverrideObstaclePushForce: 0
+  _obstaclePushForceOverride: 5
 --- !u!50 &6106132495308437990
 Rigidbody2D:
   serializedVersion: 4

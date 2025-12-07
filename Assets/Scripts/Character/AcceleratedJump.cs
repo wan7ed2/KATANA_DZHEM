@@ -22,7 +22,7 @@ public class AcceleratedJump : MonoBehaviour
     private bool _isJumping;
     private float _fallTime;
 
-    public void Jump(float modifier) => JumpInternal(modifier, jumpForce, jumpTime);
+    public bool Jump(float modifier) => JumpInternal(modifier, jumpForce, jumpTime);
 
     public void OnTriggerStay2D(Collider2D other)
     {

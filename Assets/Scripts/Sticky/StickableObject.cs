@@ -1,11 +1,15 @@
+using System;
 using Character;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 /// <summary>
 /// Base implementation of IStickable. Uses parenting to attach objects.
 /// </summary>
 public class StickableObject : MonoBehaviour, IStickable, IPurifiable
 {
+    public event Action OnStickAction;
+    
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private Transform _targetTransform;
     [SerializeField] private Collider2D _collider;
@@ -67,6 +71,8 @@ public class StickableObject : MonoBehaviour, IStickable, IPurifiable
 
         if (_useOverrideObstaclePushForce)
             GetComponent<Obstacle>()?.OverridePushForce(_obstaclePushForceOverride);
+        
+        OnStickAction?.Invoke();
     }
 
     public void OnRelease()

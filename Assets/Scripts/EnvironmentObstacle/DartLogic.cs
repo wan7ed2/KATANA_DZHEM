@@ -6,6 +6,8 @@ public class DartLogic : MonoBehaviour
 {
     [SerializeField] private float _speed = 1f;
     [SerializeField] private bool isUp = true; // true - up, false - right
+    [SerializeField] private LayerMask effectiveWayToCheckGeound;
+    [SerializeField] private float groundCheckDistance = 0.1f;
 
     StickableObject _stickableObject;
     SelfDestruct _selfDestruct;
@@ -20,6 +22,17 @@ public class DartLogic : MonoBehaviour
 
     private void Update()
     {
+        Vector3 dir;
+        if (isUp)
+            dir = transform.up;
+        else
+            dir = transform.right;
+
+        if (Physics2D.Raycast(gameObject.transform.position, dir, groundCheckDistance, effectiveWayToCheckGeound))
+        {
+            Destroy(gameObject, 0.1f);
+        }
+
         if (_stickableObject.IsStuck)
         {
             _selfDestruct.DisableSelfDestruction();
@@ -29,10 +42,6 @@ public class DartLogic : MonoBehaviour
             return;
         }
 
-        if (isUp)
-            transform.position += transform.up * _speed * Time.deltaTime;
-        else
-            transform.position += transform.right * _speed * Time.deltaTime;
-
+        transform.position += dir * _speed * Time.deltaTime;
     }
 }
