@@ -9,6 +9,7 @@ public class Psevdoezh : MonoBehaviour
     [SerializeField] private float _zalpsInBurst = 3f; 
     [SerializeField] private float _zalpCooldown = 1.5f;
     [SerializeField] private float _burstCooldown = 5f;
+    [SerializeField] private StickableObject stickableObject;
 
     private float prevBurstTimeStamp;
 
@@ -19,6 +20,11 @@ public class Psevdoezh : MonoBehaviour
 
     private void Update()
     {
+        if (stickableObject != null && stickableObject.IsStuck)
+        {
+            return;
+        }
+
         if (Time.timeSinceLevelLoad - prevBurstTimeStamp > _burstCooldown)
         {
             for (var i = 0; i < _zalpsInBurst - 1; i++)
