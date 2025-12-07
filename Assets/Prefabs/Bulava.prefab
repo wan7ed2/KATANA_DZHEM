@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8101450556072407452}
   - component: {fileID: 1150898422412928087}
   - component: {fileID: 1939341542916141243}
+  - component: {fileID: 6937191577062958235}
   m_Layer: 0
   m_Name: Bulava
   m_TagString: Untagged
@@ -74,8 +75,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af9a15b626060747a2fadbc1f2138b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stickyController: {fileID: 6822505356141508767}
+  _stickyController: {fileID: 0}
   _targetRigidbody: {fileID: 1150898422412928087}
+--- !u!114 &6937191577062958235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761142484266607739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e5f6789012345678abcdef12345678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stickParent: {fileID: 8101450556072407452}
 --- !u!1 &4454619696934157258
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,7 +100,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6294244208538794889}
   - component: {fileID: 6892012469693153191}
-  - component: {fileID: 6822505356141508767}
   - component: {fileID: 3123176063184457589}
   m_Layer: 0
   m_Name: Collider
@@ -145,19 +158,6 @@ CircleCollider2D:
   m_Offset: {x: 0.026869535, y: 0.026869774}
   serializedVersion: 2
   m_Radius: 0.7579477
---- !u!114 &6822505356141508767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4454619696934157258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4e5f6789012345678abcdef12345678, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stickParent: {fileID: 8101450556072407452}
 --- !u!114 &3123176063184457589
 MonoBehaviour:
   m_ObjectHideFlags: 0
