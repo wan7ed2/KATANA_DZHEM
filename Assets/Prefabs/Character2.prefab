@@ -6618,6 +6618,7 @@ MonoBehaviour:
     _jumpSound: {fileID: 11400000, guid: e3afd1dbdde0aea4bbc3aa7f3c83caf5, type: 2}
     _hitSleepTime: 2
     _distanceFallToSound: 12
+    _tyazheloSoundController: {fileID: 6047509897406142363}
   _jumpParticles: {fileID: 2175850248266187365}
   _animator: {fileID: 3950123222170214002}
   _goodAnim: {fileID: 9100000, guid: f1e14f9f51b49374fb84657dda1265fd, type: 2}
@@ -6771,6 +6772,7 @@ GameObject:
   - component: {fileID: 3115177141245445415}
   - component: {fileID: 1632518453675892090}
   - component: {fileID: 8109882691235832309}
+  - component: {fileID: 6047509897406142363}
   m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
@@ -6980,6 +6982,18 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &6047509897406142363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8695678073761868219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e63fcefb61427b933cd7bf087afa9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2209219576693661335
 PrefabInstance:
   m_ObjectHideFlags: 0
