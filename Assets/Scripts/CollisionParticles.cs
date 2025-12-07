@@ -11,6 +11,7 @@ public class CollisionParticles : MonoBehaviour
     [SerializeField] private float _cd = 1f;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private float _velocityMin = 1f;
+    [SerializeField] private Color _ledColorOverride;
 
     private void Awake()
     {
@@ -27,17 +28,21 @@ public class CollisionParticles : MonoBehaviour
         if (collision.collider == null || collision.collider.gameObject == null)
             return;
 
-        Debug.Log(_rb.velocity.magnitude);
         if (Mathf.Abs(_rb.velocity.x) < _velocityMin)
             return;
 
         prevSpawnTimeStamp = prevSpawnTimeStamp = Time.timeSinceLevelLoad;
-    
+        GameObject obj;
         if (_rb.velocity.x > 0)
-            Instantiate(_particlesXInverse, collision.point, Quaternion.identity);
+            obj = Instantiate(_particlesXInverse, collision.point, Quaternion.identity);
         else
-            Instantiate(_groundCollisionParticles, collision.point, Quaternion.identity);
+            obj = Instantiate(_groundCollisionParticles, collision.point, Quaternion.identity);
 
+        if (collision.collider.gameObject.tag == "Ice")
+        {
+            var main = obj.GetComponent<ParticleSystem>().main;
+            main.startColor = _ledColorOverride;
+        }
     }
 
 
