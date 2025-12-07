@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[Serializable]
 public class MovementController : IPushableByObstacle
 {
     public event Action OnJump;
-    
-    public MovementController(
+
+    public void Init(
         Rigidbody2D rigidbody,
         MovementsSettings settings,
         GroundChecker groundChecker,
