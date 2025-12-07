@@ -94,6 +94,10 @@ MonoBehaviour:
   _windDirection: {x: -1, y: 0}
   _windForce: 250
   _isActive: 1
+  _windParticles: {fileID: 4321508748737931692}
+  _particleSpeedMultiplier: 0.05
+  _particleEmissionRate: 31.7
+  _particleBaseRotation: -45
   _gizmoColor: {r: 0.5, g: 0.8, b: 1, a: 0.3}
   _arrowColor: {r: 1, g: 0.97471935, b: 0.10849059, a: 1}
 --- !u!1 &7314282596901016439
@@ -123,7 +127,7 @@ Transform:
   m_GameObject: {fileID: 7314282596901016439}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.03, y: 0, z: 0}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -212,7 +216,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 1.6
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -265,7 +269,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 12.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -768,7 +772,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 90}
-    m_Scale: {x: 20, y: 10, z: 1}
+    m_Scale: {x: 10, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -966,7 +970,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 50
+      scalar: 79.25
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1432,7 +1436,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 0}
+        key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1448,8 +1452,8 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
+        atime1: 48766
+        atime2: 65535
         atime3: 0
         atime4: 0
         atime5: 0
@@ -1458,7 +1462,7 @@ ParticleSystem:
         m_Mode: 0
         m_ColorSpace: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
