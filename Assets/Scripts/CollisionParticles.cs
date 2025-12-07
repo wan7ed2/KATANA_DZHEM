@@ -28,7 +28,6 @@ public class CollisionParticles : MonoBehaviour
         if (collision.collider == null || collision.collider.gameObject == null)
             return;
 
-        Debug.Log(_rb.velocity.magnitude);
         if (Mathf.Abs(_rb.velocity.x) < _velocityMin)
             return;
 

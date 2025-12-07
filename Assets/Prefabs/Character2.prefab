@@ -6551,6 +6551,7 @@ GameObject:
   - component: {fileID: 7746745772505608059}
   - component: {fileID: 7663394652499886544}
   - component: {fileID: 6601313797831351056}
+  - component: {fileID: 324248447847992802}
   m_Layer: 7
   m_Name: Character2
   m_TagString: Untagged
@@ -6618,10 +6619,9 @@ MonoBehaviour:
     _jumpSound: {fileID: 11400000, guid: e3afd1dbdde0aea4bbc3aa7f3c83caf5, type: 2}
     _hitSleepTime: 2
     _distanceFallToSound: 12
+    _tyazheloSoundController: {fileID: 6047509897406142363}
   _jumpParticles: {fileID: 2175850248266187365}
-  _animator: {fileID: 3950123222170214002}
-  _goodAnim: {fileID: 9100000, guid: f1e14f9f51b49374fb84657dda1265fd, type: 2}
-  _evilAnim: {fileID: 9100000, guid: b2ccf804d8dae2e4d9a11636d65340de, type: 2}
+  animatorProvider: {fileID: 324248447847992802}
 --- !u!114 &7746745772505608059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6675,6 +6675,22 @@ MonoBehaviour:
   _massDisable: 0.1
   _cutoffPoint: {fileID: 7967449028515172788}
   _chainPoint: {fileID: 6025056568735831888}
+--- !u!114 &324248447847992802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066570311115659520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375a61e7e3c909346be3c1652cef3d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goodAnimator: {fileID: 2131942831996356671}
+  badAnimator: {fileID: 3950123222170214002}
+  goodSpriteRenderer: {fileID: 6856029444972793117}
+  badSpriteRenderer: {fileID: 1505501701910520478}
 --- !u!1 &8581925502296482754
 GameObject:
   m_ObjectHideFlags: 0
@@ -6771,6 +6787,7 @@ GameObject:
   - component: {fileID: 3115177141245445415}
   - component: {fileID: 1632518453675892090}
   - component: {fileID: 8109882691235832309}
+  - component: {fileID: 6047509897406142363}
   m_Layer: 7
   m_Name: Capsule
   m_TagString: Untagged
@@ -6980,6 +6997,18 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &6047509897406142363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8695678073761868219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e63fcefb61427b933cd7bf087afa9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2209219576693661335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6988,6 +7017,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5205631491994266115}
     m_Modifications:
+    - target: {fileID: 122699677745132745, guid: 8fe72cd0328a5774a87c3e24eb311f9c, type: 3}
+      propertyPath: components
+      value: 
+      objectReference: {fileID: 324248447847992802}
+    - target: {fileID: 233790488002385576, guid: 8fe72cd0328a5774a87c3e24eb311f9c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f1e14f9f51b49374fb84657dda1265fd, type: 2}
+    - target: {fileID: 1153772625080170926, guid: 8fe72cd0328a5774a87c3e24eb311f9c, type: 3}
+      propertyPath: _target
+      value: 
+      objectReference: {fileID: 3452174001186453574}
     - target: {fileID: 2537080784030470553, guid: 8fe72cd0328a5774a87c3e24eb311f9c, type: 3}
       propertyPath: _target
       value: 
@@ -6996,6 +7037,14 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 6025056568735831888}
+    - target: {fileID: 3783539295465136914, guid: 8fe72cd0328a5774a87c3e24eb311f9c, type: 3}
+      propertyPath: m_Name
+      value: Character Sprite Evil
+      objectReference: {fileID: 0}
+    - target: {fileID: 3783539295465136914, guid: 8fe72cd0328a5774a87c3e24eb311f9c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4426365081745249539, guid: 8fe72cd0328a5774a87c3e24eb311f9c, type: 3}
       propertyPath: m_Name
       value: CharacterView
@@ -7044,11 +7093,29 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 1327118840885029535}
+    - target: {fileID: 9206670965027995017, guid: 8fe72cd0328a5774a87c3e24eb311f9c, type: 3}
+      propertyPath: m_Name
+      value: Character Sprite Good
+      objectReference: {fileID: 0}
+    - target: {fileID: 9206670965027995017, guid: 8fe72cd0328a5774a87c3e24eb311f9c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fe72cd0328a5774a87c3e24eb311f9c, type: 3}
+--- !u!212 &1505501701910520478 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 742007974367951881, guid: 8fe72cd0328a5774a87c3e24eb311f9c, type: 3}
+  m_PrefabInstance: {fileID: 2209219576693661335}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2131942831996356671 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 233790488002385576, guid: 8fe72cd0328a5774a87c3e24eb311f9c, type: 3}
+  m_PrefabInstance: {fileID: 2209219576693661335}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2241476726404655710 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 122699677745132745, guid: 8fe72cd0328a5774a87c3e24eb311f9c, type: 3}
@@ -7068,6 +7135,11 @@ Transform:
 --- !u!95 &3950123222170214002 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2916381631244665061, guid: 8fe72cd0328a5774a87c3e24eb311f9c, type: 3}
+  m_PrefabInstance: {fileID: 2209219576693661335}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6856029444972793117 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4723497505865782154, guid: 8fe72cd0328a5774a87c3e24eb311f9c, type: 3}
   m_PrefabInstance: {fileID: 2209219576693661335}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6447961925257261985

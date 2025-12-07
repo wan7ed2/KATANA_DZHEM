@@ -11,6 +11,8 @@ public class CharacterSoundView
     [SerializeField] private float _hitSleepTime = 2f;
     [SerializeField] private float _distanceFallToSound = 12f;
 
+    [SerializeField] private TyazheloSoundController _tyazheloSoundController;
+    
     public void Init(Player player, GroundChecker groundChecker)
     {
         _player = player;
@@ -26,12 +28,13 @@ public class CharacterSoundView
         
         _player.OnHit += PlayHit;
         _player.MovementController.OnJump += HandleJump;
-        _groundChecker.OnGrounded += HandleGrounded;
-        _groundChecker.OnFly += HandleFly;
+        _tyazheloSoundController.OnTyazhelo += HandleTyazhelo;
     }
 
     public void Stop()
     {
+        _player.MovementController.OnJump -= HandleJump;
+        _tyazheloSoundController.OnTyazhelo -= HandleTyazhelo;
         _player.OnHit -= PlayHit;
     }
 
@@ -72,6 +75,11 @@ public class CharacterSoundView
             return;
         
         _soundSystem.PlayOneShot(_jumpSound);
+    }
+
+    private void HandleTyazhelo()
+    {
+        _soundSystem.PlayOneShot(_fallSadSound);
     }
     
 }
