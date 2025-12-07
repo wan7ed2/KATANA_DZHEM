@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 8895656105703261842}
   m_Layer: 0
   m_Name: Surfaces_4
-  m_TagString: Untagged
+  m_TagString: Ice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7472,6 +7472,10 @@ PrefabInstance:
     - target: {fileID: 4782531773378068865, guid: cca99d7e51e16b1409c78210b21da651, type: 3}
       propertyPath: m_Name
       value: platform (72)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782531773378068865, guid: cca99d7e51e16b1409c78210b21da651, type: 3}
+      propertyPath: m_TagString
+      value: Ice
       objectReference: {fileID: 0}
     - target: {fileID: 4909081508463950899, guid: cca99d7e51e16b1409c78210b21da651, type: 3}
       propertyPath: m_Size.x
