@@ -26,6 +26,8 @@ public class Player : MonoBehaviour, IPushableByObstacle, IWindAffected
     [SerializeField] private AnimatorController _goodAnim;
     [SerializeField] private AnimatorController _evilAnim;
 
+    public const string IS_EVIL_KEY = "IsEvil";
+    
     public Rigidbody2D Rigidbody => _rigidbody;
     public MovementController MovementController => _movementController;
     public GroundChecker GroundChecker => _groundChecker;
