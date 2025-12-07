@@ -219,7 +219,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -301,7 +301,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -485,7 +485,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -662,7 +662,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -723,7 +723,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1561,7 +1561,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1673,7 +1673,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1754,7 +1754,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2031,7 +2031,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2173,6 +2173,7 @@ GameObject:
   - component: {fileID: 1863484828555259254}
   - component: {fileID: 7746745772505608059}
   - component: {fileID: 7663394652499886544}
+  - component: {fileID: 4988631002013733360}
   m_Layer: 7
   m_Name: Character2
   m_TagString: Untagged
@@ -2266,6 +2267,32 @@ MonoBehaviour:
   _handler: {fileID: 7746745772505608059}
   _position: {x: 0, y: 5}
   _showModifiers: 1
+--- !u!114 &4988631002013733360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8066570311115659520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc0cbce601138f348b2d894105840769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerRigidbody: {fileID: 8385060961309389505}
+  _maceRigidbody: {fileID: 6233847411061102582}
+  _maceTransform: {fileID: 2960520196120756797}
+  _playerTransform: {fileID: 3452174001186453574}
+  _stickRigidbody: {fileID: 6545339157135366204}
+  _minAngularVelocityThreshold: 100
+  _minMaceVelocity: 3
+  _swingBoostForce: 3
+  _velocityContribution: 0.5
+  _maxBoostForce: 15
+  _boostCooldown: 0.15
+  _compensateMaceWeight: 1
+  _weightCompensation: 0.5
+  _showDebug: 1
 --- !u!1 &8581925502296482754
 GameObject:
   m_ObjectHideFlags: 0
@@ -2315,7 +2342,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2728,3 +2755,8 @@ DistanceJoint2D:
   m_AutoConfigureDistance: 0
   m_Distance: 0.7
   m_MaxDistanceOnly: 0
+--- !u!50 &6233847411061102582 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 1150898422412928087, guid: e6e976b8240df164aa10ec722f37ddbd, type: 3}
+  m_PrefabInstance: {fileID: 6447961925257261985}
+  m_PrefabAsset: {fileID: 0}
