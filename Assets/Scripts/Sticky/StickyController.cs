@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -8,6 +9,7 @@ using UnityEngine;
 public class StickyController : MonoBehaviour
 {
     [SerializeField] private Transform _stickParent;
+    [SerializeField] private float _stickRadius;
     
     private readonly List<IStickable> _stuckObjects = new List<IStickable>();
     
@@ -41,6 +43,9 @@ public class StickyController : MonoBehaviour
             return;
             
         Vector2 stickPoint = collision.GetContact(0).point;
+        if (!IsInStickRadius(stickPoint))
+            return;
+        
         Stick(stickable, stickPoint);
     }
     
@@ -55,6 +60,12 @@ public class StickyController : MonoBehaviour
         stickable = null;
         return false;
     }
+
+    private bool IsInStickRadius(Vector2 point)
+    {
+        float distance = Vector2.Distance(_stickParent.position ,point);
+        return distance <= _stickRadius;
+    }
     
     public void Stick(IStickable stickable, Vector2 stickPoint)
     {
@@ -66,6 +77,12 @@ public class StickyController : MonoBehaviour
         OnObjectStuck?.Invoke(stickable);
     }
     
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(_stickParent.position, _stickRadius);
+    }
+
 #if UNITY_EDITOR
     private void OnValidate()
     {
