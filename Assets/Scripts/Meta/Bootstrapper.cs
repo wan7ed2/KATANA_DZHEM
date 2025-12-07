@@ -1,5 +1,5 @@
-using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Bootstrapper : MonoBehaviour, ICoroutineRunner
 {
@@ -9,19 +9,21 @@ public class Bootstrapper : MonoBehaviour, ICoroutineRunner
     [Header("Sound System")]
     [SerializeField] private SoundSource soundSourcePrefab;
 
-    private LevelLoadSystem _levelLoad;
-    private Transform _soundPoolContainer;
+    [Header("Pause menu")]
+    [SerializeField] private PauseMenu pauseMenu;
+    [SerializeField] private EventSystem eventSystem;
 
-    private Coroutine _levelCoroutine;
+    private Transform _soundPoolContainer;
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(eventSystem.gameObject);
 
         InitializeSoundSystem();
 
+        Systems.Add(new PauseSystem(pauseMenu));
         Systems.Add(new LevelLoadSystem(curtainPrefab, mainLevelName, this));
-        Systems.Add(new PauseSystem());
     }
 
     private void InitializeSoundSystem()

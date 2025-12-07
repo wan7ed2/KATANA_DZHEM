@@ -139,7 +139,13 @@ public class MovementController : IPushableByObstacle
 
     private void Reset(InputAction.CallbackContext ctx)
     {
-        _rigidbody.position = Vector2.one;
-        _rigidbody.velocity = Vector2.zero;
+        var pauseSystem = Systems.Get<PauseSystem>();
+        if (pauseSystem == null)
+            return;
+
+        if (pauseSystem.Paused)
+            pauseSystem.Resume();
+        else
+            pauseSystem.Pause();
     }
 }
