@@ -7126,6 +7126,14 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 6937191577062958235, guid: e6e976b8240df164aa10ec722f37ddbd, type: 3}
+      propertyPath: _stickRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6937191577062958235, guid: e6e976b8240df164aa10ec722f37ddbd, type: 3}
+      propertyPath: _sctickRadiusGrowth
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 8101450556072407452, guid: e6e976b8240df164aa10ec722f37ddbd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.08

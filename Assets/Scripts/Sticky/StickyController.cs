@@ -10,6 +10,8 @@ public class StickyController : MonoBehaviour
 {
     [SerializeField] private Transform _stickParent;
     [SerializeField] private float _stickRadius;
+    [SerializeField] private float _stickMaxRadius;
+    [SerializeField] private float _sctickRadiusGrowth = 0.1f;
     
     private readonly List<IStickable> _stuckObjects = new List<IStickable>();
     
@@ -64,7 +66,7 @@ public class StickyController : MonoBehaviour
     private bool IsInStickRadius(Vector2 point)
     {
         float distance = Vector2.Distance(_stickParent.position ,point);
-        return distance <= _stickRadius;
+        return distance <= GetCurrentStickRadius();
     }
     
     public void Stick(IStickable stickable, Vector2 stickPoint)
@@ -79,9 +81,15 @@ public class StickyController : MonoBehaviour
     
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(_stickParent.position, _stickRadius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(_stickParent.position, GetCurrentStickRadius());
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(_stickParent.position, _stickMaxRadius);
     }
+
+    private float GetCurrentStickRadius() => Mathf.Clamp(_stickRadius + StuckCount * _sctickRadiusGrowth, _stickRadius, _stickMaxRadius);
 
 #if UNITY_EDITOR
     private void OnValidate()
